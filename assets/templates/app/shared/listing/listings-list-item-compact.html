@@ -1,0 +1,12 @@
+<!-- ko if: $data -->
+<div class="listings-list-item hover-bg">
+    <a data-bind="attr: { href: $data.url || ('/listing/detail/' + $root.urlUtil.toUrl(title) + '/' + id) }" class="clearfix block text-center">
+        <h5 data-bind="string: 'reservation.listing'" class="bold"></h5>
+        <figure>
+            <img data-bind="attr: { src: ($data.images && images.length) ? images.sortBy('sequence')[0].thumbUrl : '/images/app/shared/image-placeholder.png' }"
+                 class="img-responsive center">
+            <figcaption data-bind="text: title" class="text-default"></figcaption>
+        </figure>
+    </a>
+</div>
+<!-- /ko -->

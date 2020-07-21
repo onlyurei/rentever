@@ -1,0 +1,126 @@
+<header data-bind="css: { 'extra-item': $root.ownsActiveReservation }" class="header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header pull-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand block" href="/">
+                    <img data-bind="attr: { src: '/images/app/shared/' + (page().data.hideHeaderSearchBar ? 'branding.png' : 'logo-100.png') }" height="46">
+                </a>
+            </div>
+            <div class="navbar-header">
+                <!-- ko with: searchBar -->
+                <div data-bind="css: { hide: $root.page().data.hideHeaderSearchBar }" class="search-bar">
+                    <form data-bind="submit: submit" class="vertical-align-top">
+                        <!-- ko if: $root.dom.isTouchDevice -->
+                        <input data-bind="value: inputs.q.value, valueUpdate: 'input', attr: { placeholder: $root.strings('search.header.placeholder'), name: inputs.q.name }"
+                               type="search" class="search-input">
+                        <!-- /ko -->
+                        <!-- ko ifnot: $root.dom.isTouchDevice -->
+                        <input data-bind="value: inputs.q.value, valueUpdate: 'input', attr: { placeholder: $root.strings('search.header.placeholder'), name: inputs.q.name }"
+                               type="search" class="search-input" autofocus>
+                        <!-- /ko -->
+                        <button data-bind="enable: ok" type="submit" class="btn btn-info find-btn">
+                            <i class="icon icon-lg icon-search-find"></i>
+                        </button>
+                    </form>
+                </div>
+                <!-- /ko -->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse navbar-responsive-collapse collapse" aira-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- ko if: $root.config().isLoggedIn -->
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'listing_create' }">
+                        <a href="/listing/create" class="vertical-align-middle">
+                            <i data-bind="attr: { title: $root.strings('nav.create.listing') }" class="icon icon-lg icon-edit-write"></i> <span
+                                data-bind="string: 'nav.create.listing'"
+                                class="hidden-sm"></span>
+                        </a>
+                    </li>
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'my_listings' }">
+                        <a href="/my/listings" class="vertical-align-middle">
+                            <i data-bind="attr: { title: $root.strings('nav.my.listings') }" class="icon icon-lg icon-list-bullet"></i> <span
+                                data-bind="string: 'nav.my.listings'"
+                                class="hidden-sm"></span>
+                        </a>
+                    </li>
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'my_reservations' }">
+                        <a href="/my/reservations" class="vertical-align-middle">
+                            <i data-bind="attr: { title: $root.strings('nav.my.reservations') }" class="icon icon-lg icon-clock"></i> <span
+                                data-bind="string: 'nav.my.reservations'"
+                                class="hidden-sm"></span>
+                        </a>
+                    </li>
+                    <!-- ko if: $root.ownsActiveReservation -->
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'pickup-return' }">
+                        <a href="/pickup-return" class="vertical-align-middle bold">
+                            <i data-bind="attr: { title: $root.strings('nav.pickup.return') }" class="icon icon-lg icon-refresh"></i> <span
+                                data-bind="string: 'nav.pickup.return'"
+                                class="hidden-sm"></span>
+                        </a>
+                    </li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko ifnot: $root.config().isLoggedIn -->
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'login' }">
+                        <a data-bind="attr: { href: '/login?url=' + (window.location.pathname + window.location.search).escapeURL(true) }"
+                           rel="nofollow" class="vertical-align-middle">
+                            <i data-bind="attr: { title: $root.strings('nav.sign.in') }" class="icon icon-lg icon-user"></i> <span
+                                data-bind="string: 'nav.sign.in'"></span>
+                        </a>
+                    </li>
+                    <li data-toggle="collapse" data-target=".in" data-bind="css: { active: $root.page().name == 'register' }">
+                        <a data-bind="attr: { href: '/register?url=' + (window.location.pathname + window.location.search).escapeURL(true) }"
+                           rel="nofollow" class="vertical-align-middle">
+                            <i data-bind="attr: { title: $root.strings('nav.register') }" class="icon icon-lg icon-edit-write"></i> <span
+                                data-bind="string: 'nav.register'"></span>
+                        </a>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: $root.config().isLoggedIn -->
+                    <li class="dropdown account-dropdown">
+                        <a href class="dropdown-toggle vertical-align-middle" data-toggle="dropdown">
+                            <!-- ko if: $root.config().user.profilePictureUrl -->
+                            <img data-bind="attr: { src: $root.config().user.profilePictureUrl } " height="24" width="24" class="vertical-align-middle">
+                            <!-- /ko -->
+                            <!-- ko ifnot: $root.config().user.profilePictureUrl -->
+                            <i class="icon icon-lg icon-user"></i>
+                            <!-- /ko -->
+                            <span data-bind="text: $root.config().isLoggedIn ? ($root.config().user.firstName || $root.config().user.username) : $root.strings('nav.welcome')"
+                                  class="hidden-sm username"></span>&nbsp;
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="myAccount">
+                            <li>
+                                <a>
+                                    <div data-bind="template: { name: 'app/shared/facebook/facebook-like-button',
+                                                                afterRender: function () { $root.exec(function () { window.FB.XFBML.parse.delay(100); },
+                                                                                                      function () { return window.FB && window.FB.XFBML; }); } }"></div>
+                                </a>
+                            </li>
+                            <li data-toggle="collapse" data-target=".in" role="presentation">
+                                <a data-bind="string: 'nav.my.favorites'" href="/my/favorites" role="menuitem"></a>
+                            </li>
+                            <li data-toggle="collapse" data-target=".in" role="presentation">
+                                <a data-bind="string: 'nav.my.profile'" href="/my/profile" role="menuitem"></a>
+                            </li>
+                            <li data-toggle="collapse" data-target=".in" role="presentation">
+                                <a data-bind="string: 'nav.my.account'" href="/my/account" role="menuitem"></a>
+                            </li>
+                            <li data-toggle="collapse" data-target=".in" role="presentation" class="divider"></li>
+                            <li data-toggle="collapse" data-target=".in" role="presentation">
+                                <a data-bind="string: 'nav.sign.out'" href="/logout" role="menuitem"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

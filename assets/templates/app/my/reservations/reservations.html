@@ -1,0 +1,73 @@
+<h1 data-bind="string: 'my.reservations.title'" class="text-center"></h1>
+
+<div role="tabpanel" class="top-margin clearfix">
+    <ul class="nav nav-tabs pull-left" role="tablist">
+        <li data-bind="css: { active: (tab() == 'received') || (!tab() && (receivedReservations().length || !sentReservationsTotal())) }" role="presentation">
+            <a data-bind="click: function (data, event) { $(event.target).closest('a').attr('href', '/my/reservations/received' +
+                                                          (receivedReservationsSorter.serialize() && ('?' + receivedReservationsSorter.serialize()))); return true; }"
+               href="/my/reservations/received" role="tab">
+                <span data-bind="string: 'my.reservations.received'"></span>
+            </a>
+        </li>
+        <li data-bind="css: { active: (tab() == 'sent') || (!tab() && sentReservationsTotal() && !receivedReservations().length) }" role="presentation">
+            <a data-bind="click: function (data, event) { $(event.target).closest('a').attr('href', '/my/reservations/sent' +
+                                                          (sentReservationsSorter.serialize() && ('?' + sentReservationsSorter.serialize()))); return true; }"
+               href="/my/reservations/sent" role="tab">
+                <span data-bind="string: 'my.reservations.sent'"></span>
+            </a>
+        </li>
+    </ul>
+    <div class="pull-right top-margin-sm">
+        <div data-bind="template: 'app/shared/loading'" class="v-middle bottom-margin-sm"></div>
+        <div class="v-middle top-margin-sm">
+            <form class="v-middle right-margin">
+                <label>
+                    <input data-bind="checked: onlyShowActive, event: { click: function () { controllers['/'](); return true; } }" type="checkbox">
+                    <span data-bind="string: 'reservation.only.show.active'"></span>
+                </label>
+            </form>
+            <!-- ko if: receivedReservations().length && ((tab() == 'received') || (!tab() && (receivedReservations().length || !sentReservationsTotal()))) -->
+            <div data-bind="template: { name: 'app/shared/form-sorter', data: receivedReservationsSorter }" class="v-middle"></div>
+            <!-- /ko -->
+            <!-- ko if: sentReservations().length && ((tab() == 'sent') || (!tab() && sentReservationsTotal() && !receivedReservations().length)) -->
+            <div data-bind="template: { name: 'app/shared/form-sorter', data: sentReservationsSorter }" class="v-middle"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<div class="tab-content">
+    <div data-bind="css: { active: (tab() == 'received') || (!tab() && (receivedReservations().length || !sentReservationsTotal())) }" role="tabpanel"
+         class="tab-pane">
+        <!-- ko if: !loading() && !receivedReservations().length -->
+        <h3 data-bind="string: 'entries.none'" class="text-center"></h3>
+        <!-- /ko -->
+        <ol data-bind="foreach: receivedReservations" class="list-group">
+            <li data-bind="css: { 'animated animated-fast lightSpeedIn': $data.newlyAdded }" class="list-group-item">
+                <div data-bind="template: 'app/shared/listing/listing-reservations-received-list-item-compact'"></div>
+                <span data-bind="template: 'app/shared/new-indicator'"></span>
+            </li>
+        </ol>
+        <div data-bind="template: { name: 'widget/pagination', data: { page: receivedReservationsPage(), pageSize: receivedReservationsPageSize(),
+                                                                       total: (receivedReservationsTotal() / receivedReservationsPageSize()).ceil(), span: 6 } }"
+             class="row"></div>
+    </div>
+    <div data-bind="css: { active: (tab() == 'sent') || (!tab() && sentReservationsTotal() && !receivedReservations().length) }" role="tabpanel"
+         class="tab-pane">
+        <!-- ko if: !loading() && !sentReservations().length -->
+        <h3 data-bind="string: 'entries.none'" class="text-center"></h3>
+        <!-- /ko -->
+        <ol data-bind="foreach: sentReservations" class="list-group">
+            <li data-bind="css: { 'animated animated-fast lightSpeedIn': $data.newlyAdded }" class="list-group-item">
+                <div data-bind="template: 'app/shared/listing/listing-reservations-sent-list-item-compact'"></div>
+                <span data-bind="template: 'app/shared/new-indicator'"></span>
+            </li>
+        </ol>
+        <div data-bind="template: { name: 'widget/pagination', data: { page: sentReservationsPage(), pageSize: sentReservationsPageSize(),
+                                                                       total: (sentReservationsTotal() / sentReservationsPageSize()).ceil(), span: 6 } }"
+             class="row"></div>
+    </div>
+</div>
+
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

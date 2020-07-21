@@ -1,0 +1,26 @@
+<div class="listings-list">
+    <!-- ko if: listings().length -->
+    <ol data-bind="foreach: listings" class="list-group">
+        <li class="list-group-item row">
+            <!-- ko if: $parent.deleteListing -->
+            <div class="text-left position-absolute remover">
+                <i data-bind="click: function () { $('#action-confirm-popover-' + id).show(); }, attr: { title: $root.strings('label.remove') }"
+                   class="icon icon-delete-circle remove-icon"></i>
+                <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                            data: { id: id, title: 'label.delete.confirm', yesType: 'danger', action: function (id) { $parent.deleteListing(id); } } }"></div>
+            </div>
+            <!-- /ko -->
+            <div data-bind="template: 'app/shared/listing/listings-list-item'" class="col-sm-10"></div>
+            <!-- ko if: (owner.id || owner) == $root.config().user.id -->
+            <div class="col-sm-2 top-margin-x2">
+                <a data-bind="string: 'label.edit', attr: { href: '/listing/edit/' + $root.urlUtil.toUrl(title) + '/' + id + '/detail' }"
+                   class="btn btn-info block"></a>
+            </div>
+            <!-- /ko -->
+        </li>
+    </ol>
+    <!-- /ko -->
+    <!-- ko if: !loading() && !listings().length -->
+    <h3 data-bind="string: 'entries.none'" class="text-center"></h3>
+    <!-- /ko -->
+</div>

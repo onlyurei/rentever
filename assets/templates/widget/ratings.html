@@ -1,0 +1,21 @@
+<!-- ko if: $data.count -->
+<div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+    <div data-bind="text: reviewed" itemprop="itemreviewed" class="sr-only"></div>
+    <div class="ratings vertical-align-middle">
+        <ol data-bind="foreach: Number.range(1, Math.ceil(parseFloat($data.averageScore, 10))).every().map(function (range) {
+                   return { score: parseFloat($data.averageScore, 10).format(1), range: parseFloat(range, 10) }; })" class="inline">
+            <li class="inline-block">
+                <!-- ko if: (range - score) >= 0.5 -->
+                <i class="icon icon-lg icon-star-half"></i>
+                <!-- /ko -->
+                <!-- ko if: (range - score) < 0.5 -->
+                <i class="icon icon-lg icon-star-two"></i>
+                <!-- /ko -->
+            </li>
+        </ol>
+        &nbsp;(<span data-bind="text: $data.count" itemprop="count"></span>)
+    </div>
+    <span data-bind="text: parseFloat($data.averageScore, 10).format(1)" itemprop="rating"></span> <span data-bind="string: 'label.out.of'"></span> <span
+        data-bind="text: $data.maxScore"></span>
+</div>
+<!-- /ko -->

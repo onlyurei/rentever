@@ -1,0 +1,58 @@
+<!-- ko if: total -->
+<ul class="pagination">
+    <!-- ko if: page > 1 -->
+    <li class="inline-block no-margin">
+        <a data-bind="attr: { href: location.pathname + '?' + Object.toQueryString(Object.merge(Object.fromQueryString(location.search), { page: page - 1 })) + ($data.anchorHash ? ('#' + anchorHash) : '') }"><<</a>
+    </li>
+    <!-- /ko -->
+    <!-- ko ifnot: total == 1 -->
+    <li data-bind="css: { active: page == 1 }" class="inline-block">
+        <!-- ko if: page == 1 -->
+        <span data-bind="text: page"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: page == 1 -->
+        <a data-bind="attr: { href: location.pathname + '?' + Object.toQueryString(Object.merge(Object.fromQueryString(location.search), { page: 1 })) + ($data.anchorHash ? ('#' + anchorHash) : '') }, text: 1"></a>
+        <!-- /ko -->
+    </li>
+    <!-- /ko -->
+    <!-- ko if: (page - (span / 2)) > 2 -->
+    <li class="inline-block">
+        <span>...</span>
+    </li>
+    <!-- /ko -->
+    <li class="inline-block">
+        <ul data-bind="foreach: Number.range(page - (span / 2), page + (span / 2)).every()
+                        .map(function (_page) { return { page: _page, currentPage: page }; })
+                        .exclude(function (_page) { return (_page.page <= 1) || (_page.page >= total); })" class="pagination no-margin">
+            <li data-bind="css: { active: page == currentPage }">
+                <!-- ko if: page == currentPage -->
+                <span data-bind="text: page"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: page == currentPage -->
+                <a data-bind="attr: { href: location.pathname + '?' + Object.toQueryString(Object.merge(Object.fromQueryString(location.search), { page: page })) + ($data.anchorHash ? ('#' + anchorHash) : '') }, text: page"></a>
+                <!-- /ko -->
+            </li>
+        </ul>
+    </li>
+    <!-- ko if: (page + (span / 2)) < (total - 1) -->
+    <li class="inline-block">
+        <span>...</span>
+    </li>
+    <!-- /ko -->
+    <!-- ko ifnot: total == 1 -->
+    <li data-bind="css: { active: page == total }" class="inline-block">
+        <!-- ko if: page == total -->
+        <span data-bind="text: page"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: page == total -->
+        <a data-bind="attr: { href: location.pathname + '?' + Object.toQueryString(Object.merge(Object.fromQueryString(location.search), { page: total })) + ($data.anchorHash ? ('#' + anchorHash) : '') }, text: total"></a>
+        <!-- /ko -->
+    </li>
+    <!-- /ko -->
+    <!-- ko if: page < total -->
+    <li class="inline-block no-margin">
+        <a data-bind="attr: { href: location.pathname + '?' + Object.toQueryString(Object.merge(Object.fromQueryString(location.search), { page: page + 1 })) + ($data.anchorHash ? ('#' + anchorHash) : '') }">>></a>
+    </li>
+    <!-- /ko -->
+</ul>
+<!-- /ko -->

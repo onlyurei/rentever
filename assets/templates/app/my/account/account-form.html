@@ -1,0 +1,76 @@
+<div class="account-form">
+    <h1 data-bind="string: 'my.account.title'" class="text-center"></h1>
+    <div class="row">
+        <div class="col-sm-3 text-center">
+            <figure>
+                <!-- ko if: user().profilePictureUrl -->
+                <div class="top-margin-sm">
+                    <i data-bind="click: deleteProfilePicture" class="icon icon-delete-circle remove-icon"></i>
+                </div>
+                <!-- /ko -->
+                <img data-bind="attr: { src: user().profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }" width="156" height="156">
+                <figcaption data-bind="string: 'my.account.profile.picture'"></figcaption>
+                <div class="fileupload center top-margin">
+                    <label>
+                        <button data-bind="string: 'label.choose.file'" class="btn btn-info btn-xs"></button>
+                        <input data-bind="attr: { 'data-url': '/api/user/uploadProfilePicture/' + $root.config().user.id, name: 'theFile' },
+                                      fileuploadOptions: {
+                                          acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|tif?f)$/i,
+                                          maxFileSize: 5 * 1024 * 1024
+                                      },
+                                      fileupload: refreshUser"
+                               type="file">
+                    </label>
+                </div>
+            </figure>
+        </div>
+        <div class="col-sm-9">
+            <form data-bind="'with': form, submit: form.submit" role="form" autocomplete="off">
+                <label class="block">
+                    <span data-bind="string: 'first.name'"></span>
+                    <input data-bind="value: inputs.firstName.value" type="text" name="firstName" class="form-control">
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'last.name'"></span>
+                    <input data-bind="value: inputs.lastName.value" type="text" name="lastName" class="form-control">
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'register.email.address'"></span>
+                    <!-- ko ifnot: $parent.user().emailVerified -->
+            <span class="small">
+                (<span data-bind="string: 'my.account.email.not.verified'"></span> |
+                <a data-bind="string: 'my.account.email.resend.verification', click: $parent.resendVerificationEmail" href></a>)
+            </span>
+                    <!-- /ko -->
+                    <input data-bind="value: inputs.email.value" type="email" name="email" class="form-control">
+                    <!-- ko if: inputs.email.error -->
+                    <label data-bind="string: inputs.email.error" class="label label-danger"></label>
+                    <!-- /ko -->
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'register.username'"></span>
+                    <input data-bind="value: $root.config().user.username" type="text" name="username" class="form-control" disabled>
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'register.password'"></span>
+                    <input data-bind="value: inputs.password.value" type="password" name="password" class="form-control">
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'register.reenter.password'"></span>
+                    <input data-bind="value: inputs._password.value" type="password" name="_password" class="form-control">
+                    <!-- ko if: inputs._password.error -->
+                    <label data-bind="string: inputs._password.error" class="label label-danger"></label>
+                    <!-- /ko -->
+                </label>
+                <label class="block">
+                    <span data-bind="string: 'listing.form.address'"></span>
+                    <input data-bind="value: inputs.displayedAddress.value, valueUpdate: 'input', autocomplete: inputs.displayedAddress.value, autocompleteOptions: inputs.displayedAddress.autocomplete"
+                           type="text" name="displayedAddress" class="form-control">
+                </label>
+                <div class="top-margin">
+                    <button data-bind="string: 'label.update', enable: ok() && !$parent.loading()" class="btn btn-lg btn-info btn-block" type="submit"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

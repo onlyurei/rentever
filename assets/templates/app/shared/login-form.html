@@ -1,0 +1,22 @@
+<h1 data-bind="string: 'login.please.sign.in'" class="form-signin-heading text-center"></h1>
+<div data-bind="template: 'app/shared/success'"></div>
+<div data-bind="template: 'app/shared/facebook/facebook-sign-in-button'"></div>
+<form data-bind="submit: form.submit" class="login-form" role="form">
+    <label>
+        <span data-bind="string: 'login.username'"></span>
+        <input data-bind="value: form.inputs.username.value, valueUpdate: 'input'" type="text" name="username" class="form-control" required autofocus>
+    </label>
+    <label>
+        <span data-bind="string: 'login.password'"></span>
+        <input data-bind="value: form.inputs.password.value, valueUpdate: 'input'" type="password" name="password" class="form-control" required>
+    </label>
+    <div class="small top-margin-md"><a data-bind="string: 'forgot.password.label'" href="/reset-password" rel="nofollow"></a></div>
+    <div class="top-margin-x2">
+        <button data-bind="string: 'login.sign.in', enable: form.ok() && !loading()" class="btn btn-lg btn-info btn-block" type="submit"></button>
+    </div>
+</form>
+<div data-bind="template: 'app/shared/error'"></div>
+<p class="text-center top-margin">
+    <span data-bind="string: 'register.prompt'"></span>&nbsp;
+    <a data-bind="string: 'nav.register', attr: { href: '/register' + window.location.search }" rel="nofollow"></a>
+</p>

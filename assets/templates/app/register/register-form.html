@@ -1,0 +1,46 @@
+<h1 data-bind="string: 'register.join.today'" class="text-center"></h1>
+<label data-bind="string: 'register.agree.to.terms', tokens: { terms: '/document/terms-of-service', privacy: '/document/privacy-policy' }" class="text-center block"></label>
+<div data-bind="template: 'app/shared/facebook/facebook-sign-in-button'"></div>
+<form data-bind="'with': form, submit: form.submit" class="login-form" role="form" autocomplete="off">
+    <label>
+        <span data-bind="string: 'first.name'"></span>
+        <input data-bind="value: inputs.firstName.value" type="text" name="firstName" class="form-control">
+    </label>
+    <label>
+        <span data-bind="string: 'last.name'"></span>
+        <input data-bind="value: inputs.lastName.value" type="text" name="lastName" class="form-control">
+    </label>
+    <label>
+        <span data-bind="string: 'register.email.address'"></span>
+        <input data-bind="value: inputs.email.value" type="email" name="email" class="form-control" required>
+        <!-- ko if: inputs.email.error -->
+        <label data-bind="string: inputs.email.error" class="label label-danger"></label>
+        <!-- /ko -->
+    </label>
+    <label>
+        <span data-bind="string: 'register.username'"></span>
+        <input data-bind="value: inputs.username.value" type="text" name="username" class="form-control" required>
+    </label>
+    <label>
+        <span data-bind="string: 'register.password'"></span>
+        <input data-bind="value: inputs.password.value" type="password" name="password" class="form-control" required>
+    </label>
+    <label>
+        <span data-bind="string: 'register.reenter.password'"></span>
+        <input data-bind="value: inputs._password.value" type="password" name="_password" class="form-control" required>
+        <!-- ko if: inputs._password.error -->
+        <label data-bind="string: inputs._password.error" class="label label-danger"></label>
+        <!-- /ko -->
+    </label>
+    <label>
+        <span data-bind="string: 'listing.form.address'"></span>
+        <input data-bind="value: inputs.displayedAddress.value, valueUpdate: 'input', autocomplete: inputs.displayedAddress.value, autocompleteOptions: inputs.displayedAddress.autocomplete"
+               type="text" name="displayedAddress" class="form-control">
+    </label>
+    <br>
+    <button data-bind="string: 'nav.register', enable: ok() && !$parent.loading()" class="btn btn-lg btn-info btn-block" type="submit"></button>
+</form>
+<p class="text-center top-margin">
+    <span data-bind="string: 'login.prompt'"></span>&nbsp;
+    <a data-bind="string: 'nav.sign.in', attr: { href: '/login' + window.location.search }" rel="nofollow"></a>
+</p>

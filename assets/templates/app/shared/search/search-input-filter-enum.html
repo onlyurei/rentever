@@ -1,0 +1,12 @@
+<label class="search-input-filter-enum block">
+    <span data-bind="text: name.titleize()" class="block"></span>
+    <select data-bind="options: values, attr: { size: (values && (values.length <= 6)) ? values.length : 1 }, value: value, optionsValue: 'id',
+                       optionsText: function (option) {
+                           if ($data.unit) {
+                               return $root.quantities(option.name + unit).to($root.config().useMetric ? displayUnit.metric : displayUnit.imperial).toPrec(1).toString();
+                           }
+                           return option.name;
+                       }"
+            class="full-width">
+    </select>
+</label>

@@ -1,0 +1,187 @@
+<!-- ko with: listing -->
+<article itemscope itemtype="http://data-vocabulary.org/Product" class="listing-detail-view">
+
+    <!-- ko if: $data.readonly -->
+    <div class="alert alert-info">
+        <p data-bind="string: 'reservation.listing.snapshot', tokens: { timestamp: Date.utc.create(readonly.timestamp).format('full') }"></p>
+        <a data-bind="string: 'reservation.listing.back', attr: { href: readonly.reservationUrl }" class="alert-link"></a> |
+        <a data-bind="string: 'reservation.listing.current', attr: { href: readonly.listingUrl }" class="alert-link"></a>
+    </div>
+    <!-- /ko -->
+
+    <div class="row">
+        <div class="col-sm-10 v-middle">
+            <h1 data-bind="text: title" itemprop="name" class="listing-title"></h1>
+        </div><div class="col-sm-2 text-right v-middle">
+            <!-- ko ifnot: $data.readonly -->
+            <div data-bind="template: { name: 'app/shared/facebook/facebook-share-button',
+                            data: { picture: ($parent.activeImage() && ('http:' + $parent.activeImage().fullUrl)) || ($root.config().url + '/images/app/shared/logo-300.png'),
+                                    name: title + ' ' + $root.strings('facebook.share.for.rent', { price: price.daily }), caption: $root.strings('brand.tagline'),
+                                    description: $root.strings('facebook.share.' + (($root.config().user.id == owner.id) ? 'owner' : 'general')) + ': ' + description.short + ' — ' + description.long } }"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8 col-md-9 bottom-margin-x2">
+            <!-- ko ifnot: $data.readonly -->
+            <!-- ko with: $parent.mostRecentRental -->
+            <div class="alert alert-info">
+                <h3 class="no-margin vertical-align-middle">
+                    <i class="icon icon-lg icon-information-circle"></i>
+                    <span data-bind="string: 'listing.most.recent.rental', tokens: { date: Date.utc.create(createdAt).format('short') }"></span>
+                </h3>
+                <a data-bind="string: 'listing.most.recent.rental.link.label',
+                              attr: { href: '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id }"
+                   class="alert-link"></a>
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+
+            <div data-bind="template: { name: 'app/listing/detail/detail-image-carousel', data: $root.page().data }"></div>
+            <div id="full-image" class="modal full-image">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div data-bind="template: { name: 'app/listing/detail/detail-image-carousel', data: $root.page().data }"></div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="top-margin-x2">
+                <h2 data-bind="string: 'listing.form.description.short'"></h2>
+                <p data-bind="html: description.short"></p>
+            </section>
+
+            <section class="top-margin-x2">
+                <h2 data-bind="string: 'listing.form.description.long'"></h2>
+                <p data-bind="html: description.long" itemprop="description" class="preserve-whitespace"></p>
+            </section>
+
+            <section class="top-margin-x2">
+                <h2 data-bind="string: 'listing.form.categories'"></h2>
+                <ul data-bind="foreach: $parent.categories().findAll(function (category) { return $data.categories && categories.any(category.id); })
+                                        .map(function (category) { return Object.merge(category, { link: $parent.browseCategoryLink(category.id) }); })">
+                    <li>
+                        <a data-bind="text: name, attr: { href: link }"></a>
+                    </li>
+                </ul>
+            </section>
+
+            <div data-bind="template: 'app/listing/detail/detail-reviews'" class="hidden-xs"></div>
+        </div>
+
+        <aside class="col-sm-4 col-md-3">
+            <div class="panel panel-default listing-price-container">
+                <div class="panel-body">
+                    <div class="listing-prices row">
+                        <div data-bind="css: { 'col-xs-6': $data.deposit && deposit.required, 'col-xs-12': !($data.deposit && deposit.required) }"
+                             class="listing-price">
+                            <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span> <span
+                                data-bind="text: price.daily.format()" itemprop="price" class="listing-price-value"></span>
+                            <div data-bind="string: 'listing.price.daily'" class="listing-price-type"></div>
+                        </div>
+
+                        <!-- ko if: $data.deposit && deposit.required -->
+                        <div class="listing-price col-xs-6">
+                            <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span> <span
+                                data-bind="text: deposit.amount.format()" class="listing-price-value"></span>
+                            <div data-bind="string: 'listing.deposit'" class="listing-price-type"></div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- ko ifnot: $data.readonly -->
+                    <div class="listing-controls row">
+                        <div class="col-lg-6 action-btn-sm">
+                            <!-- ko if: owner.id == $root.config().user.id -->
+                            <a data-bind="string: 'listing.edit.title', attr: { href: '/listing/edit/' + $root.urlUtil.toUrl(title) + '/' + id + '/detail' }"
+                               class="btn btn-info"></a>
+                            <!-- /ko -->
+                            <!-- ko ifnot: owner.id == $root.config().user.id -->
+                            <!-- ko if: $parent.isFavorited && $parent.addToFavorites && $parent.removeFromFavorites -->
+                            <button data-bind="string: $parent.isFavorited() ? 'listing.remove.from.favorites' : 'listing.add.to.favorites',
+                                               click: $parent.isFavorited() ? $parent.removeFromFavorites : $parent.addToFavorites"
+                                    type="button" class="btn btn-info">
+                            </button>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                        <div class="col-lg-6 action-btn-sm">
+                            <!-- ko if: owner.id == $root.config().user.id -->
+                            <a data-bind="string: 'listing.edit.images', attr: { href: '/listing/edit/' + $root.urlUtil.toUrl(title) + '/' + id + '/images' }"
+                               class="btn btn-info"></a>
+                            <!-- /ko -->
+                            <!-- ko ifnot: owner.id == $root.config().user.id -->
+                            <a data-bind="string: 'listing.contact.qa', attr: { href: '/listing/questions/' + $root.urlUtil.toUrl(title) + '/' + id }"
+                               class="btn btn-info"></a>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- ko ifnot: $data.readonly -->
+                <div class="row bottom-margin-x2">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <!-- ko if: owner.id == $root.config().user.id -->
+                        <a data-bind="string: 'listing.contact.qa.owner', attr: { href: '/listing/questions/' + $root.urlUtil.toUrl(title) + '/' + id }"
+                           class="btn btn-success block"></a>
+                        <!-- /ko -->
+                        <!-- ko ifnot: (owner.id == $root.config().user.id) || $data.unavailable -->
+                        <a data-bind="string: 'listing.rent.this.item', attr: { href : '/listing/reserve/' + $root.urlUtil.toUrl(title) + '/' + id }"
+                           class="btn btn-success block" rel="nofollow"></a>
+                        <!-- /ko -->
+                        <!-- ko if: $data.unavailable -->
+                        <div class="text-center">
+                            <label data-bind="string: 'listing.form.unavailable'" class="label label-danger inline-block top-margin"></label>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <section class="listing-map top-margin-x2">
+                <h2 data-bind="string: 'listing.address'"></h2>
+                <a data-bind="attr: { href: googleMapsUrl }" target="_blank" class="text-center">
+                    <img data-bind="attr: { src: googleMapsImageUrl }" class="img-responsive listing-map-img">
+                </a>
+                <div data-bind="html: displayedAddress"></div>
+            </section>
+
+            <section>
+                <h2 data-bind="string: 'listing.owner.info'"></h2>
+                <a data-bind="attr: { href: '/user/profile/' + $root.urlUtil.toUrl(owner.firstName || owner.username) + '/' + owner.id }"
+                   class="block hover-bg vertical-align-middle">
+                    <img data-bind="attr: { src: owner.profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }" width="100" height="100"
+                         class="media-object">
+                    <div class="inline-block left-margin-sm text-default">
+                        <h5 data-bind="text: owner.firstName || owner.username" itemprop="seller"></h5>
+                        <!-- ko if: $parent.userRatings -->
+                        <div data-bind="template: { name: 'widget/ratings',
+                                                    data: Object.merge($parent.userRatings(), { maxScore: 5, reviewed: owner.firstName || owner.username }) }"></div>
+                        <!-- /ko -->
+                    </div>
+                </a>
+            </section>
+
+            <!-- ko ifnot: $data.readonly -->
+            <!-- ko if: $parent.datepicker -->
+            <section class="top-margin-x2">
+                <h2 data-bind="string: 'listing.availability.calendar'"></h2>
+                <div data-bind="datepicker: $parent.datepicker"></div>
+            </section>
+            <!-- /ko -->
+            <section class="top-margin-x2">
+                <h2 data-bind="string: 'listing.qrcode'"></h2>
+                <div data-bind="qrcode: window.location.href, qrcodeOptions: { size: 800 }" class="img-responsive-container text-center"></div>
+            </section>
+            <!-- /ko -->
+
+            <div data-bind="template: 'app/listing/detail/detail-reviews'" class="visible-xs"></div>
+        </aside>
+    </div>
+</article>
+<!-- /ko -->

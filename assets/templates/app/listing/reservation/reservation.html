@@ -1,0 +1,49 @@
+<h1 data-bind="string: 'listing.reservation.title'" class="text-center bottom-margin"></h1>
+<!-- ko if: reservation -->
+
+<!-- ko if: view() == 'reservation' -->
+<!-- ko with: reservation -->
+<!-- ko if: listingClone.owner.id == $root.config().user.id-->
+<div data-bind="template: 'app/shared/listing/listing-reservations-received-list-item'"></div>
+<!-- /ko -->
+<!-- ko if: requester.id == $root.config().user.id -->
+<div data-bind="template: 'app/shared/listing/listing-reservations-sent-list-item'"></div>
+<!-- /ko -->
+<hr>
+<!-- /ko -->
+<!-- ko if: reservation().status() == 'returned' -->
+<h3 data-bind="string: 'reviews'" class="text-center bold"></h3>
+<div data-bind="string: 'reservation.review.tip.' + ((reservation().listingClone.owner.id == $root.config().user.id) ? 'owner' : 'renter'),
+                tokens: { ownerName: reservation().listingClone.owner.firstName, renterName: reservation().requester.firstName, listingTitle: reservation().listingClone.title }"
+     class="text-center text-muted"></div>
+<ol data-bind="foreach: reviews">
+    <li data-bind="template: 'app/shared/listing/listing-reservation-review'" class="top-margin"></li>
+</ol>
+<hr>
+<!-- /ko -->
+<div class="row">
+    <div class="col-sm-6 clearfix vr-right">
+        <h3 data-bind="string: 'reservation.history'" class="text-center bold"></h3>
+        <div data-bind="string: 'reservation.history.tip'" class="text-center text-muted"></div>
+        <ol data-bind="foreach: history" class="messages">
+            <li data-bind="template: 'app/shared/listing/listing-reservation-history-item'" class="clearfix"></li>
+        </ol>
+    </div>
+    <div class="col-sm-6 clearfix">
+        <h3 data-bind="string: 'reservation.messages'" class="text-center bold"></h3>
+        <div data-bind="string: 'reservation.messages.tip.' + ((reservation().listingClone.owner.id == $root.config().user.id) ? 'owner' : 'renter'),
+                        tokens: { ownerName: reservation().listingClone.owner.firstName, renterName: reservation().requester.firstName }"
+             class="text-center text-muted"></div>
+        <div data-bind="template: 'app/shared/messages/messages-send-area'"></div>
+        <div data-bind="template: 'app/shared/messages/messages'"></div>
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: view() == 'listing' -->
+<div data-bind="template: 'app/shared/listing/listing-detail-view'"></div>
+<!-- /ko -->
+
+<!-- /ko -->
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

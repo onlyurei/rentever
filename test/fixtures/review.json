@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "reviewer": 1,
+        "reviewed": 2,
+        "reservation": 300,
+        "rating": 4,
+        "comment": "x"
+    },
+    {
+        "id": 2,
+        "reviewer": 2,
+        "reviewed": 1,
+        "reservation": 300,
+        "rating": 5,
+        "comment": "y"
+    },
+    {
+        "id": 3,
+        "reviewer": 2,
+        "reviewed": 1,
+        "reservation": 301,
+        "rating": 2,
+        "comment": "y"
+    }
+]

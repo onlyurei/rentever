@@ -1,0 +1,82 @@
+<h1 data-bind="string: 'listing.reserve.title', tokens: { title: listing() && listing().title }" class="text-center"></h1>
+<!-- ko if: listing -->
+<div data-bind="template: { name: 'app/shared/listing/listings-list-item', data: listing }" class="list-group-item"></div>
+<!-- /ko -->
+<div class="row top-margin-x2">
+    <div class="col-sm-6">
+        <h3 class="left-margin">
+            <span data-bind="string: 'pick.up.date.time'"></span>:
+            <span class="date-time">
+                <time data-bind="text: Date.create(pickUpDate()).format('short'), attr: { datetime: pickUpDate }" class="label label-default"></time>
+                <time data-bind="text: pickUpTime, attr: { datetime: pickUpTime }" class="label label-default"></time>
+            </span>
+        </h3>
+        <div class="col-sm-8">
+            <div data-bind="datepicker: pickUpDatepicker"></div>
+        </div>
+        <div class="col-sm-4 top-margin">
+            <select data-bind="options: timepickerOptions, value: pickUpTime, event: { change: getEstimatedPrice }"></select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h3 class="left-margin">
+            <span data-bind="string: 'return.date.time'"></span>:
+            <span class="date-time">
+                <time data-bind="text: Date.create(returnDate()).format('short'), attr: { datetime: returnDate }" class="label label-default"></time>
+                <time data-bind="text: returnTime, attr: { datetime: returnTime }" class="label label-default"></time>
+            </span>
+        </h3>
+        <div class="col-sm-8">
+            <div data-bind="datepicker: returnDatepicker"></div>
+        </div>
+        <div class="col-sm-4 top-margin">
+            <select data-bind="options: timepickerOptions, value: returnTime, event: { change: getEstimatedPrice }"></select>
+        </div>
+    </div>
+</div>
+<div class="row top-margin-x2">
+    <div class="text-center bottom-margin">
+        <p>
+            <span class="date-time">
+                <time data-bind="text: Date.create(pickUpDate()).format('short'), attr: { datetime: pickUpDate }" class="label label-default"></time> <time data-bind="text: pickUpTime, attr: { datetime: pickUpTime }" class="label label-default"></time>
+            </span>
+            —
+            <span class="date-time">
+                <time data-bind="text: Date.create(returnDate()).format('short'), attr: { datetime: returnDate }" class="label label-default"></time> <time data-bind="text: returnTime, attr: { datetime: returnTime }" class="label label-default"></time>
+            </span>
+        </p>
+        <!-- ko if: estimatedPrice -->
+        <p>
+            <span data-bind="string: 'reservation.price.estimated'"></span>:
+            <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span>
+            <span data-bind="text: parseFloat(estimatedPrice()).format()" class="listing-price-value"></span>
+        </p>
+        <!-- /ko -->
+    </div>
+    <div data-bind="template: 'app/shared/loading'"></div>
+    <div data-bind="template: 'app/shared/error'"></div>
+    <div data-bind="template: 'app/shared/success'"></div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <!-- ko if: !success() && listing() -->
+            <button data-bind="click: function () { $('#action-confirm-popover-' + listing.id).show(); },
+                               attr: { 'data-ga': 'listing|attempt to reserve|' + listing().title + ' - ' + listing().id },
+                               enable: !success() && !loading() && pickUpDate() && pickUpTime() && returnDate() && returnTime(), string: 'label.reserve.request'"
+                    class="full-width btn btn-success"></button>
+            <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                        data: { id: listing.id, title: 'reservation.site.disclaimer',
+                                                yes: 'label.accept', no: 'label.decline', yesType: 'success', noType: 'danger',
+                                                action: reserve } }"
+                 class="position-absolute action-confirm-popover-container disclaimer-popover"></div>
+            <!-- /ko -->
+            <!-- ko if: success() && listing() -->
+            <a data-bind="attr: { href: '/listing/reservation/' + $root.urlUtil.toUrl(listing().title) + '/' + reservationId() },
+                          string: 'label.ok'" class="full-width btn btn-success"></a>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- ko if: !success() && listing() -->
+    <p data-bind="string: 'label.reserve.request.tip'" class="text-center top-margin"></p>
+    <!-- /ko -->
+</div>
+

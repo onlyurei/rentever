@@ -1,0 +1,85 @@
+.listing-search .search-bar .search-input-label {
+	font-size: 13px;
+}
+
+.listing-search .search-bar .search-input {
+	height: 28px;
+	padding: 0 5px;
+	width: 250px;
+}
+
+.listing-search .search-bar .search-input-location input {
+	font-size: 12px;
+}
+
+.listing-search .search-bar .find-btn,
+.listing-search .search-bar .search-input-sorter {
+	position: relative;
+}
+
+.listing-search .search-bar .find-btn {
+	width: 80px;
+}
+
+.listing-search .search-bar .search-input-sorter {
+	font-size: 13px;
+	overflow-x: visible;
+	width: 180px;
+	white-space: nowrap;
+}
+
+@media (max-width: 425px) {
+	.listing-search .search-bar .find-btn,
+	.listing-search .search-bar .search-input-sorter {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.listing-search .search-bar .find-btn {
+		margin-top: 10px;
+	}
+}
+
+@media (min-width: 425px) {
+	.listing-search .search-bar .search-input-sorter {
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 693px) {
+	.listing-search .search-bar .find-btn {
+		top: 20px;
+	}
+}
+
+@media (min-width: 595px) and (max-width: 767px) {
+	.listing-search .search-bar .find-btn,
+	.listing-search .search-bar .search-input-sorter {
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 768px) {
+	.listing-search .search-bar .search-input {
+		width: 215px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.listing-search .search-bar .search-input-sorter {
+		top: -35px;
+		margin-bottom: 0;
+	}
+}
+
+@media (min-width: 992px) {
+	.listing-search .search-bar .search-input-sorter {
+		top: 21px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.listing-search .search-bar .search-input {
+		width: 295px;
+	}
+}

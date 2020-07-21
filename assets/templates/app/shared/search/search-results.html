@@ -1,0 +1,40 @@
+<div id="search-results" class="search-results">
+    <div data-bind="template: 'app/shared/error'"></div>
+    <!-- ko ifnot: $data.error -->
+
+    <!-- ko if: results().length -->
+    <ol data-bind="foreach: results" class="row">
+        <li data-bind="template: 'app/shared/search/search-results-item'" class="col-sm-3"></li>
+    </ol>
+    <!-- ko ifnot: $data.noPagination -->
+    <div data-bind="template: { name: 'widget/pagination', data: { page: page(), pageSize: pageSize(), total: (total() / pageSize()).ceil(), span: 6 } }"></div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: !$data.loading() && !results().length -->
+    <!-- ko if: searchBar.inputs.location.useCurrentPosition() && searchBar.inputs.location.gettingCurrentPosition() -->
+    <p data-bind="string: 'location.current.getting.placeholder'" class="text-center"></p>
+    <!-- /ko -->
+    <!-- ko if: searchBar.inputs.location.useCurrentPosition() && searchBar.inputs.location.getCurrentPositionFailed() -->
+    <p data-bind="string: 'location.current.getting.failed'" class="text-center"></p>
+    <!-- /ko -->
+    <!-- ko if: !searchBar.inputs.location.useCurrentPosition() && !searchBar.inputs.location.value().compact() -->
+    <p data-bind="string: 'location.use.one'" class="text-center"></p>
+    <!-- /ko -->
+    <!-- ko if: !$data.noZeroResultsPrompt && ((searchBar.inputs.location.useCurrentPosition() && !searchBar.inputs.location.gettingCurrentPosition() &&
+                !searchBar.inputs.location.getCurrentPositionFailed()) || (!searchBar.inputs.location.useCurrentPosition() && searchBar.inputs.location.value().compact())) -->
+    <div class="text-center">
+        <div data-bind="string: 'search.no.results.tips'"></div>
+        <a data-bind="string: 'listing.create.prompt',
+                      attr: { href: '/listing/create?address=' + (searchBar.inputs.location.useCurrentPosition() ?
+                                    (searchBar.inputs.location.currentPosition() ?
+                                    (searchBar.inputs.location.currentPosition().coords.latitude + ',' + searchBar.inputs.location.currentPosition().coords.longitude) : '') :
+                                    searchBar.inputs.location.value()) }"
+           rel="nofollow"></a>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- /ko -->
+    <div data-bind="template: 'app/shared/loading'"></div>
+</div>

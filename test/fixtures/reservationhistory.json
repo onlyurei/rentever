@@ -1,0 +1,23 @@
+[
+    {
+        "id": 24,
+        "reservation": 24,
+        "user": 3,
+        "status": "picked_up",
+        "createdAt" : "2014-07-05 09:00:00"
+    },
+    {
+        "id": 200,
+        "reservation": 200,
+        "user": 2,
+        "status": "picked_up",
+        "createdAt" : "2016-01-01T00:00:00.000Z"
+    },
+    {
+        "id": 201,
+        "reservation": 201,
+        "user": 2,
+        "status": "picked_up",
+        "createdAt" : "2016-01-01T00:00:00.000Z"
+    }
+]

@@ -1,0 +1,8 @@
+<div class="search-bar">
+    <form data-bind="submit: submit" class="vertical-align-top">
+        <label data-bind="template: { name: 'app/shared/search/search-input-term', data: inputs.q }" class="right-margin"></label>
+        <label data-bind="template: { name: 'app/shared/search/search-input-location', data: inputs.location }" class="right-margin"></label>
+        <button data-bind="string: 'search.button.label', enable: ok" type="submit" class="btn btn-info btn-xs find-btn right-margin"></button>
+        <label data-bind="template: { name: 'app/shared/form-input-sorter', data: inputs.sorter }"></label>
+    </form>
+</div>

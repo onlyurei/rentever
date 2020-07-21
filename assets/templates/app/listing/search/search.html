@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-sm-2 filters">
+        <div data-bind="template: 'app/listing/search/search-filters'"></div>
+    </div>
+    <div class="col-sm-10">
+        <div data-bind="template: { name: 'app/listing/search/search-search-bar', data: searchBar }" class="col-sm-12"></div>
+        <!-- ko if: results().length -->
+        <h1 data-bind="string: (query() && query().compact()) ? 'search.results.heading' : 'search.results.heading.no.query',
+                       tokens: { start: (page() == 1) ? 1 : (pageSize() * (page() - 1) + 1),
+                                 end: (page() == 1) ? ((total() < pageSize()) ? total() : pageSize()) : ((total() < (pageSize() * page())) ? total() : (pageSize() * page())),
+                                 total: total().format(), query: query() && query().compact() }"
+            class="search-results-heading col-sm-12"></h1>
+        <!-- /ko -->
+        <div data-bind="template: 'app/shared/search/search-results'" class="col-sm-12"></div>
+    </div>
+</div>

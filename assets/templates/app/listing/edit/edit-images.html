@@ -1,0 +1,63 @@
+<div class="edit-images">
+    <!-- ko if: listing().images.length < 10 -->
+    <h5 class="text-center vertical-align-middle">
+        <i class="icon icon-lg icon-information-circle"></i> <span data-bind="string: 'listing.edit.images.label.upload'"></span>
+    </h5>
+    <div class="text-center">
+        <!-- ko ifnot: loading -->
+        <div class="fileupload center">
+            <label>
+                <button data-bind="string: 'label.choose.file'" class="btn btn-info btn-xs"></button>
+                <!-- ko if: $root.dom.isTouchDevice -->
+                <input data-bind="attr: { 'data-url': '/api/listing/uploadImage/' + listing().id, name: 'theFile' },
+                                  fileuploadOptions: {
+                                      acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|tif?f)$/i,
+                                      maxFileSize: 5 * 1024 * 1024,
+                                      progressall: function (event, data) { var progress = (data.loaded / data.total * 100).ceil(); loading(progress); if (progress == 100) { loading(false); } }
+                                  },
+                                  fileupload: function () { refresh(listing().id); }"
+                       type="file" class="center">
+                <!-- /ko -->
+                <!-- ko ifnot: $root.dom.isTouchDevice -->
+                <input data-bind="attr: { 'data-url': '/api/listing/uploadImage/' + listing().id, name: 'theFile' },
+                                  fileuploadOptions: {
+                                      acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|tif?f)$/i,
+                                      maxFileSize: 5 * 1024 * 1024,
+                                      progressall: function (event, data) { var progress = (data.loaded / data.total * 100).ceil(); loading(progress); if (progress == 100) { loading(false); } }
+                                  },
+                                  fileupload: function () { refresh(listing().id); }"
+                       type="file" class="center" multiple>
+                <!-- /ko -->
+            </label>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: loading -->
+        <div class="progress">
+            <div data-bind="style: { width: loading() + '%' }" class="progress-bar" role="progressbar" style="width: 0;"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <h5 class="text-center">
+        <span data-bind="text: listing().images.length" class="badge"></span> <span
+            data-bind="string: (listing().images.length == 1) ? 'images.singular' : 'images.plural'"></span>
+    </h5>
+    <!-- ko if: listing().images.length -->
+    <!-- ko ifnot: $root.dom.isTouchDevice -->
+    <h5 class="text-center vertical-align-middle">
+        <i class="icon icon-lg icon-cursor-move-two"></i> <span data-bind="string: 'listing.edit.images.label.arrange'"></span>
+    </h5>
+    <!-- /ko -->
+    <ol data-bind="foreach: listing().images.sortBy('sequence'), sortable: !$root.dom.isTouchDevice ? orderedImageIds : null" class="images row">
+        <li data-bind="attr: { id: id }" class="col-sm-3">
+            <div class="text-right">
+                <i data-bind="click: $parent.deleteImage" class="icon icon-delete-circle remove-icon"></i>
+            </div>
+            <a data-bind="attr: { href: fullUrl }" target="_blank">
+                <img data-bind="attr: { src: thumbUrl }" class="img-responsive">
+            </a>
+            <textarea data-bind="value: caption, event: { blur: $parent.updateImage }, attr: { placeholder: $root.strings('listing.edit.images.caption.placeholder') }" maxlength="200"></textarea>
+        </li>
+    </ol>
+    <!-- /ko -->
+</div>

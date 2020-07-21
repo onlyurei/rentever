@@ -1,0 +1,58 @@
+<!-- ko if: status() == 'requested' -->
+<!-- ko ifnot: requester && ((requester == $root.config().user.id) || (requester.id == $root.config().user.id)) -->
+<div class="top-margin">
+    <button data-bind="string: 'reservation.action.accept', click: function () { $('#action-confirm-popover-' + id + '-accept').show(); }"
+            class="btn btn-sm btn-success block full-width"></button>
+    <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                data: { id: id + '-accept', yesType: 'success', noType: 'danger', data: $data, title: 'reservation.site.disclaimer',
+                                        yes: 'label.accept', no: 'label.decline',
+                                        action: function (data) { $parent.changeReservationStatus.checkConflictingReservations(id).done(function () {
+                                                                    if (parseInt($parent.changeReservationStatus.conflictingReservations(), 10) > 0) {
+                                                                        $('#action-confirm-popover-' + id + '-conflicting').show();
+                                                                    } else {
+                                                                        $parent.changeReservationStatus(data, 'accepted');
+                                                                    }
+                                                                   }); } } }"
+         class="position-absolute action-confirm-popover-container disclaimer-popover"></div>
+    <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                data: { id: id + '-conflicting', yesType: 'warning', data: $data, title: 'reservation.conflicting',
+                                        tokens: { number: $parent.changeReservationStatus.conflictingReservations() },
+                                        action: function (data) { $parent.changeReservationStatus(data, 'accepted', null, true); } } }"></div>
+</div>
+<div class="top-margin">
+    <button data-bind="string: 'reservation.action.decline', click: function () { $('#action-confirm-popover-' + id + '-decline').show(); }"
+            class="btn btn-sm btn-danger block full-width"></button>
+    <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                data: { id: id + '-decline', yesType: 'danger', data: $data,
+                                        action: function (data) { $parent.changeReservationStatus(data, 'declined'); } } }"
+         class="position-absolute action-confirm-popover-container"></div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- ko if: status() == 'accepted' -->
+<!-- ko ifnot: requester && ((requester == $root.config().user.id) || (requester.id == $root.config().user.id)) -->
+<div class="top-margin">
+    <button data-bind="string: 'reservation.action.picked_up', attr: { 'data-target': '#reservation-verification-code-collapse-' + id }"
+            data-toggle="collapse" class="btn btn-sm btn-info block full-width"></button>
+    <div data-bind="template: 'app/shared/listing/listing-reservations-received-list-item-verification-code'"></div>
+</div>
+<!-- /ko -->
+<button data-bind="string: 'reservation.action.cancel', click: function () { $('#action-confirm-popover-' + id + '-cancel').show(); }"
+        class="btn btn-sm btn-warning block full-width top-margin"></button>
+<div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                            data: { id: id + '-cancel', yesType: 'warning', data: $data,
+                                    action: function (data) { $parent.changeReservationStatus(data, 'cancelled'); } } }"
+     class="position-absolute action-confirm-popover-container"></div>
+<!-- /ko -->
+<!-- ko if: status() == 'picked_up' -->
+<!-- ko ifnot: requester && ((requester == $root.config().user.id) || (requester.id == $root.config().user.id)) -->
+<div class="top-margin">
+    <button data-bind="string: 'reservation.action.returned', attr: { 'data-target': '#reservation-verification-code-collapse-' + id }"
+            data-toggle="collapse" class="btn btn-sm btn-success block full-width"></button>
+    <div data-bind="template: 'app/shared/listing/listing-reservations-received-list-item-verification-code'"></div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-download-contract'"></div>
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-add-to-google-calendar'"></div>
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-detail'"></div>

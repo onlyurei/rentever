@@ -1,0 +1,8 @@
+[
+    {
+        "id": 1,
+        "reservation": 1,
+        "sender": 2,
+        "message": "test"
+    }
+]

@@ -1,0 +1,17 @@
+<h1 class="text-center position-relative vertical-align-middle">
+    <span data-bind="string: 'my.listings.title'"></span>
+    <!-- ko if: total() -->
+    <span data-bind="text: total()" class="badge"></span>
+    <!-- /ko -->
+    <a data-bind="string: 'nav.create.listing'" href="/listing/create" class="btn btn-info btn-xs create-btn"></a>
+</h1>
+
+<!-- ko if: listings().length -->
+<div data-bind="template: { name: 'app/shared/form-sorter', data: sorter }" class="text-right"></div>
+<!-- /ko -->
+<div data-bind="template: 'app/my/shared/listings-list'"></div>
+<div data-bind="template: { name: 'widget/pagination', data: { page: page(), pageSize: pageSize(), total: (total() / pageSize()).ceil(), span: 6 } }"
+     class="row"></div>
+
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

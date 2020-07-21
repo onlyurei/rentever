@@ -1,0 +1,20 @@
+.listing-reservation-review textarea {
+	width: 97%;
+	height: 100px;
+}
+
+.listing-reservation-review label {
+	font-size: 15px;
+}
+
+.listing-reservation-review .icon {
+	font-size: 1.6em;
+	line-height: 1em;
+}
+
+@media (max-width: 767px) {
+	.listing-reservation-review figcaption {
+		text-align: left;
+		margin-left: 15px;
+	}
+}

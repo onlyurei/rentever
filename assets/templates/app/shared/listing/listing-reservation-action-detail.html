@@ -1,0 +1,10 @@
+<!-- ko ifnot: window.location.pathname.startsWith('/listing/reservation/') -->
+<!-- ko if: (status() == 'returned') && reviews.none(function (review) { return review.reviewer == $root.config().user.id; }) -->
+<a data-bind="string: 'reservation.action.review',
+              attr: { href: '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id + (($data.code && code()) ? ('/' + code().toUpperCase()) : '') }"
+   class="btn btn-sm btn-success block full-width top-margin"></a>
+<!-- /ko -->
+<a data-bind="string: 'reservation.action.contact',
+              attr: { href: '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id + (($data.code && code()) ? ('/' + code().toUpperCase()) : '') }"
+   class="btn btn-sm btn-info block full-width top-margin"></a>
+<!-- /ko -->

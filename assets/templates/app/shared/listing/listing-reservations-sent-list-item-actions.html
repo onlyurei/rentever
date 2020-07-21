@@ -1,0 +1,25 @@
+<!-- ko if: (status() == 'requested') || (status() == 'accepted') -->
+<button data-bind="string: 'reservation.action.cancel', click: function () { $('#action-confirm-popover-' + id + '-cancel').show(); }"
+        class="btn btn-sm btn-warning block full-width top-margin"></button>
+<div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                            data: { id: id + '-cancel', yesType: 'warning', data: $data,
+                                    action: function (data) { $parent.changeReservationStatus(data, 'cancelled'); } } }"
+     class="position-absolute action-confirm-popover-container"></div>
+<!-- /ko -->
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-download-contract'"></div>
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-add-to-google-calendar'"></div>
+<div data-bind="template: 'app/shared/listing/listing-reservation-action-detail'"></div>
+<!-- ko if: (status() == 'accepted') && pickupCode() -->
+<figure class="top-margin text-center">
+    <div data-bind="qrcode: $root.config().url + '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id + '/' + pickupCode(), qrcodeOptions: { size: 800 }"
+         class="img-responsive-container"></div>
+    <figcaption><strong data-bind="string: 'pickup.code'"></strong>: <kbd data-bind="text: pickupCode"></kbd></figcaption>
+</figure>
+<!-- /ko -->
+<!-- ko if: (status() == 'picked_up') && returnCode() -->
+<figure class="top-margin text-center">
+    <div data-bind="qrcode: $root.config().url + '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id + '/' + returnCode(), qrcodeOptions: { size: 800 }"
+         class="img-responsive-container"></div>
+    <figcaption><strong data-bind="string: 'return.code'"></strong>: <kbd data-bind="text: returnCode"></kbd></figcaption>
+</figure>
+<!-- /ko -->

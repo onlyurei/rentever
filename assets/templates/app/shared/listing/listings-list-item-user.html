@@ -1,0 +1,11 @@
+<!-- ko if: $data.user -->
+<a data-bind="attr: { href: '/user/profile/' + $root.urlUtil.toUrl(user.firstName || user.username) + '/' + user.id }"
+   class="hover-bg block text-center">
+    <h5 data-bind="string: 'reservation.' + role" class="bold"></h5>
+    <figure>
+        <img data-bind="attr: { src: user.profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }"
+             class="img-responsive center thumb">
+        <figcaption data-bind="text: user.firstName || user.username" class="text-default"></figcaption>
+    </figure>
+</a>
+<!-- /ko -->

@@ -1,0 +1,156 @@
+[
+    {
+        "id": 1,
+        "title": "listing1",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 2,
+        "title": "listing-for-cloning",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 400,
+        "title": "listing-to-check-number-of-pending-reservations-1",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 402,
+        "title": "listing-to-check-number-of-pending-reservations-2",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 500,
+        "title": "listing-for-auto-declining-other-reservations",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 600,
+        "title": "listing-for-review",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 700,
+        "title": "listing-for-scheduler",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 800,
+        "title": "listing-for-contract-generation",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x"
+    },
+    {
+        "id": 900,
+        "title": "listing-for-create-update-test",
+        "owner": 1,
+        "price": {
+            "daily": 10
+        },
+        "deposit": {
+            "required": false,
+            "amount": 0
+        },
+        "description": {
+            "short": "short description",
+            "long": "long description"
+        },
+        "displayedAddress": "x",
+        "categories": ["sport", "tools"]
+    }
+]

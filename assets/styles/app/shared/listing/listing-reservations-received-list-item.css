@@ -1,0 +1,11 @@
+@media (max-width: 767px) {
+	.listing-reservations-received-list-item .disclaimer-popover {
+		top: -60px;
+	}
+}
+
+@media (min-width: 768px) {
+	.listing-reservations-received-list-item .disclaimer-popover {
+		left: -55px;
+	}
+}

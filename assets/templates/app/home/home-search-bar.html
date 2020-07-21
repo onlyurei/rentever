@@ -1,0 +1,7 @@
+<div class="search-bar">
+    <form data-bind="submit: submit" class="vertical-align-top">
+        <label data-bind="template: { name: 'app/shared/search/search-input-term', data: inputs.q }" class="input"></label>
+        <label data-bind="template: { name: 'app/shared/search/search-input-location', data: inputs.location }" class="input input-location"></label>
+        <button data-bind="string: 'search.button.label', enable: ok" type="submit" class="btn btn-warning find-btn"></button>
+    </form>
+</div>

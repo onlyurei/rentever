@@ -1,0 +1,30 @@
+[
+    {
+        "listing": 2,
+        "thumbUrl": "first",
+        "fullUrl": "first",
+        "sequence": 1,
+        "caption": "first image"
+    },
+    {
+        "listing": 2,
+        "thumbUrl": "second",
+        "fullUrl": "second",
+        "sequence": 2,
+        "caption": "second image"
+    },
+    {
+        "listing": 800,
+        "thumbUrl": "thumb-url-1",
+        "fullUrl": "full-url-1",
+        "sequence": 0,
+        "caption": ""
+    },
+    {
+        "listing": 800,
+        "thumbUrl": "thumb-url-2",
+        "fullUrl": "full-url-2",
+        "sequence": 2,
+        "caption": ""
+    }
+]

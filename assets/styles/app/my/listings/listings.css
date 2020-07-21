@@ -1,0 +1,11 @@
+.my-listings .create-btn {
+	right: 0;
+	top: 5px;
+	position: absolute;
+}
+
+@media (max-width: 480px) {
+	.my-listings .create-btn {
+		position: static;
+	}
+}

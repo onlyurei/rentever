@@ -1,0 +1,134 @@
+<style type="text/css">
+    body {
+        font-family: Century, Calibri, "Times New Roman", sans-serif;
+        width: 800px;
+        text-align: left;
+        margin: auto;
+        padding-bottom: 30px;
+        font-size: 11pt;
+    }
+
+    h1 {
+        font-size: 13pt;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+
+    h2 {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-top: 8px;
+        margin-bottom: 2px;
+    }
+
+    h3 {
+        font-size: 11pt;
+        font-weight: bold;
+        margin-top: 6px;
+        margin-bottom: 2px;
+    }
+
+    table {
+        width: 100%;
+        border: solid 1px black;
+    }
+
+    td {
+        border: solid 1px black;
+        vertical-align: top;
+    }
+
+    .marked {
+        text-decoration: underline;
+    }
+
+    .uppercased {
+        text-transform: uppercase;
+    }
+
+    .imageThumb {
+        max-width: 400px;
+        max-height: 240px;
+    }
+</style>
+<h1>Item Rental Agreement</h1>
+
+<h2>Summary</h2>
+Owner, <%- ownerName %>, agrees to rent &ldquo;<%- itemTitle %>&rdquo; to Renter, <%- renterName %>, from <span class="marked"><%- pickupDate %></span> to <span class="marked"><%- returnDate %></span>
+for <span class="marked">$<%- price %></span>.
+
+<h2>Item in Agreement</h2>
+
+<table>
+    <tr>
+        <td>
+            <img class="imageThumb" src="<%- imageUrl %>" />
+        </td>
+        <td>
+            <b>Item #</b> <%- itemId %><br>
+            <b>Item Name</b> <%- itemTitle %><br>
+            <b>Item Brief Description</b> <%- itemShortDescription %><br>
+            <b>Item Full Description</b> <%- itemLongDescription %><br>
+        </td>
+    </tr>
+</table>
+<br>
+
+This Item Rental Agreement (“Agreement”) is effective as of the date of last signature (“Effective Date”), and is made between <span class="marked"><%- ownerName %></span> (“Owner”) and <span
+        class="marked"><%- renterName %></span> (“Renter”). Owner and Renter are hereinafter collectively referred to as “Parties”.
+
+<h2>Terms</h2>
+
+<h3>Product as described</h3>
+Owner certified the product is in the exact condition as described at the listing. Renter has the right to refuse to rent if rental item does not match with listing description.
+
+<h3>Security Deposit</h3>
+In addition to rental fee, Renter shall pay a deposit of <span class="marked">$<%- depositAmount %></span> at the time this Agreement is signed. Owner may use the deposit to cover any damages on the
+item caused by the renter. If there is no damage to rental item, owner must return the full deposit to return upon item returning.
+
+<h3>Loss or Damage</h3>
+Renter shall alert Owner to any damage to the rental item. Renter shall be responsible for any loss or damage to rental item and loss of use.
+
+<h3>Item Return</h3>
+Renter is responsible to return at the agreed date and time to Owner. Any late return might resolve in additional fees. Owner is responsible to verify the condition of the item upon approving the item
+return.
+
+<h3>Ownership</h3>
+Owner shall at all times retain ownership and title to the Rental Item. Renter shall indemnify and hold Owner harmless against all loss and damages caused by the use of Rental item.
+
+<h3>Disclaimer</h3>
+RentEver.com does not provide any guarantee at any capacity in this the transaction. RentEver.com reserves the rights to provide communication information between Owner and Renter when requested by any U.S
+court.
+
+<h3>Severability</h3>
+In the event any provision of this Agreement is held by a court or other tribunal of competent jurisdiction to be unenforceable, that provision will be enforced to the maximum extent permissible under
+applicable law, and the other provisions of this Agreement will remain in full force and effect. The parties further agree that in the event such provision is an essential part of this Agreement, they
+will begin negotiations for a suitable replacement provision.
+
+<h3>Entire Agreement</h3>
+This Agreement represents the entire understanding relating to the subject matter hereof and prevails over any prior or contemporaneous, conflicting or additional communications. This Agreement can
+only be modified by a written amendment signed by the party against whom enforcement of such modification is sought.
+<br><br>
+Owner and Renter acknowledges receipt of a copy of this Agreement and acknowledges having read and understood the foregoing.
+<br><br>
+<table>
+    <tr>
+        <td>
+            Owner Name<br>
+            <span class="marked uppercased"><%- ownerName %></span><br><br>
+            _________________________________<br>
+            Signature<br><br>
+            _________________________________<br>
+            Date and Time<br>
+        </td>
+        <td>
+            Renter Name<br>
+            <span class="marked uppercased"><%- renterName %></span><br><br>
+            _________________________________<br>
+            Signature<br><br>
+            _________________________________<br>
+            Date and Time<br>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,128 @@
+.listing-detail-view .listing-title {
+	margin-top: 0;
+}
+
+.listing-detail-view h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 8px;
+}
+
+.listing-detail-view .action-btn-sm {
+	margin-bottom: 10px;
+	padding: 5px;
+	text-align: center;
+}
+
+.listing-detail-view .listing-map-img {
+	width: 100%;
+}
+
+.listing-detail-view .carousel {
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+
+.listing-detail-view .carousel img {
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.listing-detail-view .full-image .carousel .carousel-inner > .item > a > img {
+	max-height: none;
+}
+
+.listing-detail-view .listing-price-value {
+	font-size: 30px;
+}
+
+.listing-detail-view .listing-prices,
+.listing-detail-view .listing-controls {
+	margin-bottom: 10px;
+}
+
+.listing-detail-view address {
+	margin-top: 5px;
+}
+
+.listing-detail-view .facebook-share-button {
+	margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+	.listing-detail-view .carousel {
+		width: 470px;
+		height: 313px;
+	}
+
+	.listing-detail-view .full-image .modal-dialog {
+		width: 722px;
+	}
+
+	.listing-detail-view .full-image .carousel {
+		width: 702px;
+	}
+
+	.listing-detail-view .carousel .carousel-inner > .item > a > img {
+		max-width: 470px;
+		max-height: 313px;
+	}
+
+	.listing-detail-view .full-image .carousel .carousel-inner > .item > a > img {
+		max-width: 700px;
+	}
+}
+
+@media (min-width: 992px) {
+	.listing-detail-view .carousel {
+		width: 697px;
+		height: 465px;
+	}
+
+	.listing-detail-view .full-image .modal-dialog {
+		width: 822px;
+	}
+
+	.listing-detail-view .full-image .carousel {
+		width: 802px;
+	}
+
+	.listing-detail-view .carousel .carousel-inner > .item > a > img {
+		max-width: 697px;
+		max-height: 465px;
+	}
+
+	.listing-detail-view .full-image .carousel .carousel-inner > .item > a > img {
+		max-width: 800px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.listing-detail-view .carousel {
+		width: 847px;
+		height: 565px;
+	}
+
+	.listing-detail-view .full-image .modal-dialog {
+		width: 1046px;
+	}
+
+	.listing-detail-view .full-image .carousel {
+		width: 1026px;
+	}
+
+	.listing-detail-view .carousel .carousel-inner > .item > a > img {
+		max-width: 847px;
+		max-height: 565px;
+	}
+
+	.listing-detail-view .full-image .carousel .carousel-inner > .item > a > img {
+		max-width: 1024px;
+	}
+}

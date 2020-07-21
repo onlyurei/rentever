@@ -1,0 +1,23 @@
+<h1 data-bind="string: 'listing.questions.title'" class="text-center"></h1>
+<!-- ko if: listing -->
+<!-- ko with: listing -->
+<div data-bind="template: 'app/shared/listing/listings-list-item'" class="list-group-item"></div>
+<div class="text-center top-margin">
+    <div data-bind="string: 'listing.questions.tip.' + ((owner.id == $root.config().user.id) ? 'owner' : 'renter'),
+                    tokens: { ownerName: owner.firstName, listingTitle: title }"></div>
+    <div data-bind="string: 'listing.questions.tip.seen'"></div>
+</div>
+<!-- /ko -->
+<!-- ko if: $root.config().isLoggedIn -->
+<div data-bind="template: 'app/shared/messages/messages-send-area'"></div>
+<!-- /ko -->
+<!-- ko ifnot: $root.config().isLoggedIn -->
+<div class="text-center top-margin">
+    <a data-bind="string: 'listing.questions.login', tokens: { ownerName: listing() && listing().owner.firstName }, attr: { href: '/login?url=' + window.location.pathname }"
+       class="btn btn-info" rel="nofollow"></a>
+</div>
+<!-- /ko -->
+<div data-bind="template: 'app/shared/messages/messages'"></div>
+<!-- /ko -->
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

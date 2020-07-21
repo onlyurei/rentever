@@ -1,0 +1,83 @@
+<style type="text/css">
+table {
+    border: solid 1px grey;
+}
+table td {
+    border: solid 1px grey;
+}
+table th {
+    border: solid 1px grey;
+}
+</style>
+
+<h1>Dashboard</h1>
+
+<h2>Users (<%- userCount%>)</h2>
+<table>
+    <tr>
+        <th>username</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>email</th>
+        <th>created at</th>
+    </tr>
+
+    <% for (index in users) { %>
+        <tr>
+            <td><%- users[index].username %></td>
+            <td><%- users[index].firstName %></td>
+            <td><%- users[index].lastName %></td>
+            <td><%- users[index].email %></td>
+            <td><%- users[index].createdAt %></td>
+        </tr>
+    <% } %>
+
+</table>
+
+<h2>Listings (<%- listingCount%>)</h2>
+<table>
+    <tr>
+        <th>title</th>
+        <th>owner</th>
+        <th>short descr</th>
+        <th>daily price</th>
+        <th>createdAt</th>
+        <th>updatedAt</th>
+    </tr>
+
+    <% for (index in listings) { %>
+        <tr>
+            <td><%- listings[index].title %></td>
+            <td><%- listings[index].owner.username %></td>
+            <td><%- listings[index].description.short %></td>
+            <td><%- listings[index].price.daily %></td>
+            <td><%- listings[index].createdAt %></td>
+            <td><%- listings[index].updatedAt %></td>
+        </tr>
+    <% } %>
+
+</table>
+
+<h2>Reservations (<%- reservationCount%>)</h2>
+<table>
+    <tr>
+        <th>requester</th>
+        <th>listing</th>
+        <th>listing owner</th>
+        <th>status</th>
+        <th>price</th>
+        <th>createdAt</th>
+    </tr>
+
+    <% for (index in reservations) { %>
+    <tr>
+        <td><%- reservations[index].requester.username %></td>
+        <td><%- reservations[index].listingClone.title %></td>
+        <td><%- reservations[index].listingClone.owner.username %></td>
+        <td><%- reservations[index].status %></td>
+        <td><%- reservations[index].estimatedPrice %></td>
+        <td><%- reservations[index].createdAt %></td>
+    </tr>
+    <% } %>
+
+</table>

@@ -1,0 +1,20 @@
+.listings-list-item .title {
+	font-size: 18px;
+	margin-top: 0;
+	margin-bottom: 8px;
+}
+
+.listings-list-item .listing-price {
+	color: #333;
+}
+
+.listings-list-item .short-description {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: normal;
+}
+
+.listings-list-item .address {
+	font-size: 13px;
+	margin-bottom: 0;
+}

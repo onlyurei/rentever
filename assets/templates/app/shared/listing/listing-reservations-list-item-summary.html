@@ -1,0 +1,61 @@
+<!-- ko with: Object.merge($data, { datetimeFrom: Date.utc.create(datetimeFrom), datetimeTo: Date.utc.create(datetimeTo) }) -->
+<article>
+    <table class="table text-default">
+        <tr>
+            <th data-bind="string: 'pick.up.date.time'" class="text-right"></th>
+            <td>
+                <time data-bind="text: datetimeFrom.format('full') + ' (' + datetimeFrom.relative() + ')', attr: { datetime: datetimeFrom.toISOString() },
+                                 css: { 'label-reverse': (status() == 'requested') && ((datetimeFrom.secondsFromNow() >= 0) && (datetimeFrom.secondsFromNow() < 43200)),
+                                        'label-success': (status() == 'accepted') && ((datetimeFrom.secondsFromNow() >= 0) && (datetimeFrom.secondsFromNow() < 43200)),
+                                        'label-danger': ((status() == 'requested') || (status() == 'accepted')) && (datetimeFrom.secondsFromNow() < 0) }"
+                      class="label label-default"></time>
+            </td>
+        </tr>
+        <tr>
+            <th data-bind="string: 'return.date.time'" class="text-right"></th>
+            <td>
+                <time data-bind="text: datetimeTo.format('full') + ' (' + datetimeTo.relative() + ')', attr: { datetime: datetimeTo.toISOString() },
+                                 css: { 'label-info': (status() == 'picked_up') && ((datetimeTo.secondsFromNow() >= 0) && (datetimeTo.secondsFromNow() < 43200)),
+                                        'label-danger': ((status() == 'requested') || (status() == 'accepted') || (status() == 'picked_up')) && (datetimeTo.secondsFromNow() < 0) }"
+                      class="label label-default"></time>
+            </td>
+        </tr>
+        <tr>
+            <th data-bind="string: 'listing.address'" class="text-right"></th>
+            <td>
+                <a data-bind="text: listingClone.displayedAddress,
+                              attr: { href: 'https://maps.google.com/maps?daddr=' + listingClone.location.coordinates.clone().reverse().join(',') }"
+                   target="_bank" data-go="true" class="label label-default"></a>
+            </td>
+        </tr>
+        <!-- ko if: $data.estimatedPrice -->
+        <tr>
+            <th data-bind="string: 'reservation.price.estimated'" class="text-right"></th>
+            <td>
+                <span data-bind="string: 'currency.symbol'"></span>
+                <span data-bind="text: estimatedPrice" class="bold icon-lg"></span>
+            </td>
+        </tr>
+        <!-- /ko -->
+        <!-- ko if: $data.actualPrice -->
+        <tr>
+            <th data-bind="string: 'reservation.price.actual'" class="text-right"></th>
+            <td>
+                <span data-bind="string: 'currency.symbol'"></span>
+                <span data-bind="text: actualPrice" class="bold icon-lg"></span>
+            </td>
+        </tr>
+        <!-- /ko -->
+        <!-- ko if: listingClone.deposit.required -->
+        <tr>
+            <th data-bind="string: 'listing.deposit'" class="text-right"></th>
+            <td>
+                <span data-bind="string: 'currency.symbol'"></span>
+                <span data-bind="text: listingClone.deposit.amount.format()" class="bold icon-lg"></span>
+            </td>
+        </tr>
+        <!-- /ko -->
+    </table>
+    <div data-bind="template: 'app/shared/listing/listing-reservation-status'"></div>
+</article>
+<!-- /ko -->

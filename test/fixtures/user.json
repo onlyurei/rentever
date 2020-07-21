@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "firstName": "test1",
+        "lastName": "test1",
+        "username": "test1",
+        "password": "test1",
+        "email": "test1@rentever.com"
+    },
+    {
+        "id": 2,
+        "firstName": "test2",
+        "lastName": "test2",
+        "username": "test2",
+        "password": "test2",
+        "email": "test2@rentever.com"
+    },
+    {
+        "id": 3,
+        "firstName": "test3",
+        "lastName": "test3",
+        "username": "test3",
+        "password": "test3",
+        "email": "test3@rentever.com"
+    },
+    {
+        "id": 4,
+        "firstName": "test4",
+        "lastName": "test4",
+        "username": "test4",
+        "password": "test4",
+        "email": "test4@rentever.com",
+        "passwordResetToken": "PASSWORD-RESET-TOKEN-4"
+    },
+    {
+        "id": 5,
+        "firstName": "userForPasswordResetTest",
+        "lastName": "userForPasswordResetTest",
+        "username": "userForPasswordResetTest",
+        "password": "userForPasswordResetTest",
+        "email": "userForPasswordResetTest@rentever.com",
+        "passwordResetToken": "PASSWORD-RESET-TOKEN-5"
+    }
+]

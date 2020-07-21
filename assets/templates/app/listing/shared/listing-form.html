@@ -1,0 +1,152 @@
+<div class="listing-form">
+    <div data-bind="string: 'listing.form.notice'" class="text-center text-muted"></div>
+    <form data-bind="'with': form, submit: form.submit" role="form" autocomplete="off">
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.title.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-edit-write"></i>
+                    <span data-bind="string: 'listing.form.title'"></span>
+                    <input data-bind="value: inputs.title.value, valueUpdate: 'input'" type="text" name="title" class="form-control" maxlength="50" required>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.description.short.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-align-justify"></i>
+                    <span data-bind="string: 'listing.form.description.short'"></span>
+                    <input data-bind="value: inputs['description.short'].value, valueUpdate: 'input'" type="text" name="description.short"
+                           class="form-control" maxlength="90" required>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.description.long.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-align-justify-1"></i>
+                    <span data-bind="string: 'listing.form.description.long'"></span>
+                    <textarea data-bind="value: inputs['description.long'].value, valueUpdate: 'input'" name="description.long" class="form-control"
+                              maxlength=5000" required></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.categories.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-tag-2"></i>
+                    <span data-bind="string: 'listing.form.categories'"></span>: <span
+                        data-bind="text: inputs.categories.values().findAll(function (category) {
+                                         return inputs.categories.value().any(category.id); }).map('name').join(', ')"></span>
+                    <select data-bind="options: inputs.categories.values,
+                                       selectedOptions: inputs.categories.value,
+                                       optionsText: 'name',
+                                       optionsValue: 'id'"
+                            class="block" multiple size="5">
+                    </select>
+                </label>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.deposit.required.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle top-margin-x2">
+                    <input data-bind="checked: inputs['deposit.required'].value" type="checkbox" name="deposit.required">
+                    <i class="icon icon-lg icon-lock"></i>
+                    <span data-bind="string: 'listing.form.deposit.required'"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.deposit.amount.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-dollar"></i>
+                    <span data-bind="string: 'listing.form.deposit.amount'"></span>
+                    <input data-bind="value: inputs['deposit.amount'].value" type="text" name="deposit.amount" class="form-control">
+                    <!-- ko if: inputs['deposit.amount'].error -->
+                    <label data-bind="text: inputs['deposit.amount'].error" class="label label-danger block"></label>
+                    <!-- /ko -->
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.price.daily.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-dollar"></i>
+                    <span data-bind="string: 'listing.form.price.daily'"></span>
+                    <input data-bind="value: inputs['price.daily'].value, valueUpdate: 'input'" type="text" name="price.daily" class="form-control">
+                    <!-- ko if: inputs['price.daily'].error -->
+                    <label data-bind="text: inputs['price.daily'].error" class="label label-danger block"></label>
+                    <!-- /ko -->
+                </label>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.address.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle">
+                    <i class="icon icon-lg icon-pin-map"></i>
+                    <span data-bind="string: 'listing.form.address'"></span>
+                    <input data-bind="value: inputs.displayedAddress.gettingCurrentPosition() ? $root.strings('location.current.getting.placeholder') :
+                                            (inputs.displayedAddress.useCurrentPosition() ? (inputs.displayedAddress.getCurrentPositionFailed() ? (inputs.displayedAddress.getCurrentPositionFailed().message || $root.strings('location.error')) :
+                                            $root.strings('location.current.placeholder')) : inputs.displayedAddress.value),
+                                     valueUpdate: 'input', css: { 'text-danger': inputs.displayedAddress.getCurrentPositionFailed() },
+                                     attr: { name: 'displayedAddress' }, disable: inputs.displayedAddress.useCurrentPosition,
+                                     autocomplete: inputs.displayedAddress.value, autocompleteOptions: inputs.displayedAddress.autocomplete"
+                           type="text" name="displayedAddress" class="form-control" maxlength="300" required>
+                </label>
+                <!-- ko if: inputs.displayedAddress.geolocationAvailable -->
+                <label class="block use-current-position text-left">
+                    <input data-bind="checked: inputs.displayedAddress.useCurrentPosition" type="checkbox"> <i class="icon icon-location-arrow vertical-align-middle"></i> <span
+                        data-bind="string: 'location.use.current.label'" class="search-input-label"></span>
+                </label>
+                <!-- /ko -->
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4 form-tip-rail">
+                <aside data-bind="string: 'listing.form.unavailable.hint'"></aside>
+            </div>
+            <div class="col-sm-8">
+                <label class="block vertical-align-middle top-margin-x2">
+                    <input data-bind="checked: inputs.unavailable.value" type="checkbox" name="available">
+                    <i class="icon icon-lg icon-remove text-danger"></i>
+                    <span data-bind="string: 'listing.form.unavailable'"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-8">
+                <!-- ko if: $parent.success -->
+                <div data-bind="template: { name: 'app/shared/success', data: $parent }"></div>
+                <!-- /ko -->
+                <button data-bind="string: 'listing.form.submit.label', enable: ok() && !$parent.loading()" class="btn btn-lg btn-info btn-block"
+                        type="submit"></button>
+            </div>
+        </div>
+    </form>
+</div>

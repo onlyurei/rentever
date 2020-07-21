@@ -1,0 +1,14 @@
+<div class="listing-reservations-sent-list-item">
+    <div class="row">
+        <div data-bind="template: { name: 'app/shared/listing/listings-list-item',
+                                    data: Object.merge(listingClone, { url: '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id + '/listing/detail' }) }"
+             class="col-sm-10 v-middle"></div><div
+            data-bind="template: { name: 'app/shared/listing/listings-list-item-user', data: { user: listingClone.owner, role: 'owner' } }"
+            class="col-sm-2 v-middle"></div>
+    </div>
+    <hr>
+    <div class="row">
+        <div data-bind="template: 'app/shared/listing/listing-reservations-list-item-summary'" class="col-sm-9 col-lg-10"></div>
+        <div data-bind="template: 'app/shared/listing/listing-reservations-sent-list-item-actions'" class="col-sm-3 col-lg-2"></div>
+    </div>
+</div>

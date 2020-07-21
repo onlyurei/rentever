@@ -1,0 +1,4 @@
+<!-- ko if: (status() == 'accepted') || (status() == 'picked_up') -->
+<a data-bind="string: 'reservation.action.download.contract', attr: { href: '/api/reservation/downloadContractPdf?reservationId=' + id }"
+   class="btn btn-sm btn-default block full-width top-margin" target="_blank"></a>
+<!-- /ko -->

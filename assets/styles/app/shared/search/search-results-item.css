@@ -1,0 +1,77 @@
+.search-results-item .content {
+	color: #333;
+	border: 1px solid #E0E0E0;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+
+.search-results-item .content:hover,
+.search-results-item .content:focus {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+.search-results-item .content-text {
+	padding: 8px;
+}
+
+.search-results-item .thumb {
+	height: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+}
+
+.search-results-item .title {
+	font-size: 15px;
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.search-results-item .price {
+	font-size: 13px;
+}
+
+.search-results-item .short-description {
+	font-size: 13px;
+	margin: 5px 0;
+}
+
+.search-results-item .address {
+	font-size: 13px;
+	margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+	.search-results-item .content {
+		height: 300px;
+	}
+
+	.search-results-item .thumb {
+		height: 128px;
+	}
+
+	.search-results-item img {
+		max-height: 128px;
+	}
+}
+
+@media (min-width: 992px) {
+	.search-results-item .thumb {
+		height: 125px;
+	}
+
+	.search-results-item img {
+		max-height: 125px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.search-results-item .thumb {
+		height: 156px;
+	}
+
+	.search-results-item img {
+		max-height: 156px;
+	}
+}

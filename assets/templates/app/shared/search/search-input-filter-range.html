@@ -1,0 +1,12 @@
+<label class="search-input-filter-range block">
+    <span class="block filter-label">
+        <span data-bind="text: name.titleize()"></span>:
+        <!-- ko if: value() -->
+        <span data-bind="text: ('' + value()).split(',')[0]"></span> - <span data-bind="text: ('' + value()).split(',')[1]"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: value() -->
+        <span data-bind="text: min"></span> - <span data-bind="text: max"></span>
+        <!-- /ko -->
+    </span>
+    <span data-bind="slider: value, sliderOptions: { min: min, max: max, range: range }" class="block"></span>
+</label>

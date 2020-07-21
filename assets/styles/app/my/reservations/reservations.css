@@ -1,0 +1,19 @@
+.my-reservations .list-group-item:hover,
+.my-reservations .list-group-item:focus {
+	background-color: transparent;
+}
+
+.my-reservations hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.my-reservations th {
+	font-size: 15px;
+}
+
+@media (min-width: 768px) {
+	.my-reservations h5 {
+		margin-top: 0;
+	}
+}

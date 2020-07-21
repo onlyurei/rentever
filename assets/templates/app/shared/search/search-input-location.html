@@ -1,0 +1,16 @@
+<label class="search-input-location">
+    <span data-bind="string: 'location.label'" class="block search-input-label text-left"></span>
+    <input data-bind="value: gettingCurrentPosition() ? $root.strings('location.current.getting.placeholder')
+                                                      : (useCurrentPosition() ? (getCurrentPositionFailed() ? (getCurrentPositionFailed().message || $root.strings('location.error'))
+                                                                                                            : $root.strings('location.current.placeholder'))
+                                                                              : value),
+                      valueUpdate: 'input', css: { 'text-danger': getCurrentPositionFailed() }, attr: { name: name, placeholder: $root.strings('location.placeholder') }, disable: useCurrentPosition,
+                      autocomplete: value, autocompleteOptions: autocomplete"
+           type="text" class="search-input">
+    <!-- ko if: geolocationAvailable -->
+    <label class="block use-current-position text-left">
+        <input data-bind="checked: useCurrentPosition" type="checkbox"> <i class="icon icon-location-arrow vertical-align-middle"></i> <span
+            data-bind="string: 'location.use.current.label'" class="search-input-label"></span>
+    </label>
+    <!-- /ko -->
+</label>

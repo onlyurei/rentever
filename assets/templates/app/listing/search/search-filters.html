@@ -1,0 +1,5 @@
+<ul data-bind="foreach: results() && Object.values(Object.findAll(searchBar.inputs, function (key, value) { return value.filter; }))">
+    <li>
+        <div data-bind="template: 'app/shared/search/search-input-filter-' + type "></div>
+    </li>
+</ul>

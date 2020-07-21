@@ -1,0 +1,56 @@
+<div class="up row colored text-center">
+    <h1 data-bind="string: 'home.heading'" class="heading text-slim"></h1>
+    <h2 data-bind="string: 'home.heading.sub'" class="heading-sub text-slim"></h2>
+    <div data-bind="template: { name: 'app/home/home-search-bar', data: searchBar }"></div>
+    <div class="row">
+        <div class="col-sm-6 top-margin-x2 left-right-padding-x2">
+            <h2 data-bind="string: 'home.heading.left'" class="top-margin-sm"></h2>
+            <p data-bind="string: 'home.heading.left.sub'" class="text-left text-slim"></p>
+            <a data-bind="string: 'nav.create.listing.alias'" href="/listing/create" class="top-margin"></a>
+        </div>
+        <div class="col-sm-6 vr-left top-margin-x2 left-right-padding-x2">
+            <h2 data-bind="string: 'home.heading.right'" class="top-margin-sm heading-right"></h2>
+            <p data-bind="string: 'home.heading.right.sub'" class="text-left text-slim"></p>
+            <a data-bind="string: 'nav.how-it-works.alias'" href="/document/how-it-works" class="top-margin"></a>
+        </div>
+    </div>
+</div>
+<h2 data-bind="string: 'available.nearby'" id="nearby" class="text-center"></h2>
+<div class="row bottom-margin">
+    <ul data-bind="foreach: results">
+        <li class="clearfix">
+            <!-- ko if: results().length -->
+            <h2 data-bind="text: category.name" class="category-name"></h2>
+            <!-- /ko -->
+            <!-- ko if: results().length || !$data.noZeroResultsPrompt -->
+            <div data-bind="template: 'app/shared/search/search-results'" class="col-sm-12"></div>
+            <!-- /ko -->
+            <!-- ko if: results().length -->
+            <a data-bind="string: 'see.more', attr: { href: searchLink }" class="pull-right right-margin see-more-link"></a>
+            <!-- /ko -->
+        </li>
+    </ul>
+</div>
+<div class="meter row colored text-center text-slim">
+    <h2 data-bind="string: 'home.meter.title'" class="top-margin-sm bottom-margin-sm"></h2>
+    <div data-bind="string: 'home.meter.title.sub'"></div>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-5">
+            <h5 data-bind="string: 'home.meter.value', tokens: { value: meter.value() }"></h5>
+            <div data-bind="slider: meter.value, sliderOptions: { min: 20, max: 1000, step: 20, continuous: true }"></div>
+        </div>
+        <div class="col-sm-5">
+            <h5 data-bind="string: 'home.meter.price', tokens: { price: meter.price() }"></h5>
+            <div data-bind="slider: meter.price, sliderOptions: { min: 5, max: 50, step: 5, continuous: true }"></div>
+        </div>
+    </div>
+    <div data-bind="string: 'home.meter.recover', tokens: { value: meter.value(), time: meter.time(), price: meter.price() }" class="top-margin"></div>
+    <div class="row text-normal">
+        <div class="col-xs-offset-1 col-xs-5">
+            <a data-bind="string: 'nav.create.listing.alias'" href="/listing/create" class="block top-margin"></a>
+        </div>
+        <div class="col-xs-5">
+            <a data-bind="string: 'nav.how-it-works.alias'" href="/document/how-it-works" class="block top-margin"></a>
+        </div>
+    </div>
+</div>

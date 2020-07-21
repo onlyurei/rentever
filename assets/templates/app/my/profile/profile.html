@@ -1,0 +1,65 @@
+<!-- ko if: user() -->
+<div itemscope itemtype="http://schema.org/Person" class="row">
+    <div class="col-sm-3 v-middle">
+        <img data-bind="attr: { src: user().profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }" itemprop="image"
+             class="img-responsive" width="400" height="400">
+    </div><div class="col-sm-8 col-sm-offset-1 v-middle">
+        <h1>
+            <span data-bind="text: user().firstName" itemprop="givenName"></span>&nbsp;<span data-bind="text: user().lastName" itemprop="familyName"></span>
+        </h1>
+        <!-- ko if: ratings -->
+        <div data-bind="template: { name: 'widget/ratings', data: Object.merge(ratings(), { maxScore: 5, reviewed: user().firstName + ' ' + user().lastName }) }"
+             class="bottom-margin"></div>
+        <!-- /ko -->
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <div data-bind="text: user().address && user().address.city" itemprop="addressLocality"></div>
+            <div data-bind="text: user().address && user().address.state" itemprop="addressRegion"></div>
+            <div data-bind="text: user().address && user().address.country" itemprop="addressCountry" class="text-muted"></div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+
+<div role="tabpanel" class="top-margin">
+    <ul class="nav nav-tabs" role="tablist">
+        <li data-bind="css: { active: (tab() == 'listings') || (!tab() && (listings().length || !reviewsTotal())) }" role="presentation">
+            <a data-bind="attr: { href: listingsUrl }" role="tab" class="vertical-align-middle">
+                <span data-bind="string: 'nav.my.listings'"></span>
+                <!-- ko if: listingsTotal -->
+                <span data-bind="text: listingsTotal" class="badge"></span>
+                <!-- /ko -->
+            </a>
+        </li>
+        <li data-bind="css: { active: (tab() == 'reviews') || (!tab() && reviewsTotal() && !listings().length) }" role="presentation">
+            <a data-bind="attr: { href: reviewsUrl }" role="tab" class="vertical-align-middle">
+                <span data-bind="string: 'nav.my.reviews'"></span>
+                <!-- ko if: reviewsTotal -->
+                <span data-bind="text: reviewsTotal" class="badge"></span>
+                <!-- /ko -->
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div data-bind="css: { active: (tab() == 'listings') || (!tab() && (listings().length || !reviewsTotal())) }" role="tabpanel" class="tab-pane">
+        <div data-bind="template: 'app/my/shared/listings-list'"></div>
+        <div data-bind="template: { name: 'widget/pagination', data: { page: listingsPage(), pageSize: listingsPageSize(),
+                                                                       total: (listingsTotal() / listingsPageSize()).ceil(), span: 6 } }"
+             class="row"></div>
+    </div>
+    <div data-bind="css: { active: (tab() == 'reviews') || (!tab() && reviewsTotal() && !listings().length) }" role="tabpanel" class="tab-pane">
+        <ol data-bind="foreach: reviews" class="list-group">
+            <li data-bind="template: 'app/shared/listing/listing-reservation-review'" class="list-group-item no-hover-bg"></li>
+        </ol>
+        <!-- ko if: !loading() && !reviews().length -->
+        <h3 data-bind="string: 'entries.none'" class="text-center"></h3>
+        <!-- /ko -->
+        <div data-bind="template: { name: 'widget/pagination', data: { page: reviewsPage(), pageSize: reviewsPageSize(),
+                                                                       total: (reviewsTotal() / reviewsPageSize()).ceil(), span: 6 } }"
+             class="row"></div>
+    </div>
+</div>
+
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

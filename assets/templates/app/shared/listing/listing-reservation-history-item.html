@@ -1,0 +1,25 @@
+<!-- ko with: Object.merge($data, { reservation: $parent.reservation(), user: ((status == 'picked_up') || (status == 'returned')) ? $parent.reservation().requester : user }) -->
+<!-- ko if: $data.reservation -->
+<div data-bind="css: { 'media-right pull-right': user.id != reservation.listingClone.owner.id }"
+     class="listing-reservation-history-item media">
+    <a data-bind="attr: { href: '/user/profile/' + $root.urlUtil.toUrl(user.firstName || user.username) + '/' + user.id },
+                          css: { 'pull-left': user.id == reservation.listingClone.owner.id, 'pull-right': user.id != reservation.listingClone.owner.id,
+                                 'bold': (user.id == reservation.listingClone.owner.id) || (user.id == $root.config().user.id) }"
+       class="text-center hover-bg">
+        <figure>
+            <img data-bind="attr: { src: user.profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }" width="50" height="50"
+                 class="media-object">
+            <figcaption data-bind="text: user.firstName || user.username" class="text-default media-heading"></figcaption>
+        </figure>
+    </a>
+    <div class="media-body row">
+        <p data-bind="css: { 'label-default': status == 'requested', 'label-warning': status == 'cancelled', 'label-danger': status == 'declined',
+                             'label-success': (status == 'accepted') || (status == 'returned'), 'label-info': status == 'picked_up' }"
+           class="label message-body">
+            <span data-bind="string: 'reservation.status.' + status"></span> @
+            <time data-bind="text: Date.utc.create(updatedAt).format('full'), attr: { datetime: updatedAt }"></time>
+        </p>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

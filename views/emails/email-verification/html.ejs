@@ -1,0 +1,19 @@
+<% include ../shared/up.html.ejs %>
+<tr>
+    <td class="content-block">
+        Please confirm the email address by clicking on the link below.<br><br>
+        We may need to send you critical information about our service in the future, and it is important that we have your accurate email address on file.
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        <a href="<%= link %>" class="btn-primary">Confirm Email Address</a>
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        Note: unless you confirm the email address, you cannot use this email address to login yet.<br><br>
+        You can always use your username <strong><%= username %></strong> to login.
+    </td>
+</tr>
+<% include ../shared/down.html.ejs %>

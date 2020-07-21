@@ -1,0 +1,6 @@
+<label class="search-input-sorter">
+    <span data-bind="string: 'sorter.label'" class="v-middle"></span>
+    <select data-bind="options: options, value: value,
+                       optionsText: function (option) { return $root.strings('sorter.' + option.key + '.' + option.dir + '.label'); }"
+            class="v-middle"></select>
+</label>

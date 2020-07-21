@@ -1,0 +1,8 @@
+**/node_modules
+**/lib
+**/nls
+**/build
+**/cleaned
+**/templates
+**/workspace
+www

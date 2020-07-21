@@ -1,0 +1,33 @@
+<div class="carousel detail-image-carousel">
+    <!-- ko if: activeImage -->
+    <div class="detail-image-carousel">
+        <div data-bind="foreach: images" class="carousel-inner">
+            <figure data-bind="css: { active: $data == $parent.activeImage() }" class="item">
+                <a data-bind="click: $parent.triggerWindowResize" data-toggle="modal" data-target="#full-image" href class="hidden-xs">
+                    <img data-bind="attr: { src: fullUrl }, event: { error: function (element, event) { event.target.src = '/images/app/shared/image-placeholder.png'; } }" itemprop="image">
+                </a>
+                <img data-bind="attr: { src: fullUrl }, event: { error: function (element, event) { event.target.src = '/images/app/shared/image-placeholder.png'; } }" class="visible-xs">
+                <figcaption data-bind="html: caption" class="carousel-caption"></figcaption>
+            </figure>
+        </div>
+        <!-- ko if: images().length > 1 -->
+        <a data-bind="click: function () { navImage(true); }" class="left carousel-control" href role="button">
+            <span class="icon icon-chevron-left icon-prev"></span>
+        </a>
+        <a data-bind="click: function () { navImage(); }" class="right carousel-control" href role="button">
+            <span class="icon icon-chevron-right icon-next"></span>
+        </a>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko ifnot: activeImage -->
+    <div class="carousel-inner">
+        <figure class="item active">
+            <a data-bind="click: triggerWindowResize" data-toggle="modal" data-target="#full-image" href class="hidden-xs">
+                <img data-bind="attr: { src: '/images/app/shared/image-placeholder.png' }">
+            </a>
+            <img data-bind="attr: { src: '/images/app/shared/image-placeholder.png' }" class="visible-xs">
+        </figure>
+    </div>
+    <!-- /ko -->
+</div>

@@ -1,0 +1,19 @@
+<h1 data-bind="string: 'pickup.return.title'" class="text-center"></h1>
+<div class="text-center">
+    <label data-bind="string: 'pickup.return.notice'" class="label label-info"></label>
+</div>
+
+<form data-bind="submit: enter" class="text-center">
+    <label class="vertical-align-middle top-margin">
+        <span data-bind="string: 'reservation.action.verification.code.prompt'" class="block top-margin"></span>
+        <input data-bind="value: code" type="text" class="text-input-big top-margin-md uppercase" maxlength="4">
+        <button data-bind="string: 'label.enter'" type="submit" class="btn btn-info block full-width top-margin"></button>
+    </label>
+</form>
+
+<ol data-bind="foreach: reservations">
+    <li data-bind="template: 'app/shared/listing/listing-reservations-received-list-item'"></li>
+</ol>
+
+<div data-bind="template: 'app/shared/loading'"></div>
+<div data-bind="template: 'app/shared/error'"></div>

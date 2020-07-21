@@ -1,0 +1,27 @@
+<a data-bind="attr: { href: '/listing/detail/' + $root.urlUtil.toUrl(title) + '/' + id }" itemscope itemtype="http://data-vocabulary.org/Product"
+   class="search-results-item block">
+    <article class="content hover-bg">
+        <div class="thumb">
+            <img data-bind="attr: { src: thumbUrl || '/images/app/shared/image-placeholder.png' },
+                        event: { error: function (element, event) { event.target.src = '/images/app/shared/image-placeholder.png'; } }"
+                 itemprop="image" class="img-responsive center">
+        </div>
+        <div class="content-text">
+            <div class="row no-padding">
+                <h3 data-bind="text: title.truncateOnWord(36)" itemprop="name" class="title col-xs-8 col-sm-6 col-lg-7"></h3>
+                <div class="price col-xs-4 col-sm-6 col-lg-5 text-right">
+                    <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span><span
+                        data-bind="text: price.daily" itemprop="price" class="listing-price-value"></span>/<span
+                        data-bind="string: 'price.daily.affix.short'" class="listing-price-type"></span>
+                </div>
+            </div>
+            <h4 data-bind="text: shortDescription.truncateOnWord(85)" itemprop="description" class="short-description"></h4>
+            <div class="row no-padding text-muted address">
+                <div data-bind="text: address" class="col-xs-8 col-sm-6 col-lg-7"></div>
+                <div class="col-xs-4 col-sm-6 col-lg-5 text-right">
+                    <span data-bind="quantity: distance, quantityUnit: 'km', quantityTo: $root.config().useMetric ? 'km': 'mi'" class="address"></span>
+                </div>
+            </div>
+        </div>
+    </article>
+</a>

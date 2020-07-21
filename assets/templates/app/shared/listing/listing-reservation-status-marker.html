@@ -1,0 +1,26 @@
+<ol class="listing-reservation-status row text-center">
+    <li data-bind="css: { 'hide': status() != 'requested', 'text-default': status() == 'requested' }">
+        <i class="icon icon-2x icon-clock block"></i>
+        <label data-bind="string: 'reservation.status.requested'" class="block"></label>
+    </li>
+    <li data-bind="css: { 'hide': status() != 'cancelled', 'text-warning': status() == 'cancelled' }">
+        <i class="icon icon-2x icon-close-delete block"></i>
+        <label data-bind="string: 'reservation.status.cancelled'" class="block"></label>
+    </li>
+    <li data-bind="css: { 'hide': status() != 'declined', 'text-danger': status() == 'declined' }">
+        <i class="icon icon-2x icon-denied-block block"></i>
+        <label data-bind="string: 'reservation.status.declined'" class="block"></label>
+    </li>
+    <li data-bind="css: { 'hide': status() != 'accepted', 'text-success': status() == 'accepted' }">
+        <i class="icon icon-2x icon-check-mark-circle-two block"></i>
+        <label data-bind="string: 'reservation.status.accepted'" class="block"></label>
+    </li>
+    <li data-bind="css: { 'hide': status() != 'picked_up', 'text-info': status() == 'picked_up' }">
+        <i class="icon icon-2x icon-refresh block"></i>
+        <label data-bind="string: 'reservation.status.picked_up'" class="block"></label>
+    </li>
+    <li data-bind="css: { 'hide': status() != 'returned', 'text-success': status() == 'returned' }">
+        <i class="icon icon-2x icon-like block"></i>
+        <label data-bind="string: 'reservation.status.returned'" class="block"></label>
+    </li>
+</ol>

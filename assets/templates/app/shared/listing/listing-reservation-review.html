@@ -1,0 +1,48 @@
+<div itemscope itemtype="http://data-vocabulary.org/Review" class="listing-reservation-review row">
+    <!-- ko if: $data.reviewer  -->
+    <a data-bind="attr: { href: '/user/profile/' + $root.urlUtil.toUrl(reviewer.firstName || reviewer.username) + '/' + (reviewer.id || reviewer) }"
+       class="hover-bg text-center col-sm-1 v-middle">
+        <figure>
+            <img data-bind="attr: { src: reviewer.profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' }"
+                 class="img-responsive center thumb hidden-xs">
+            <figcaption data-bind="text: reviewer.firstName || reviewer.username" itemprop="reviewer" class="text-default"></figcaption>
+        </figure>
+    </a><!-- /ko --><div class="col-sm-11 v-middle">
+        <!-- ko if: $data.editable -->
+        <label data-bind="string: 'review.rating'"></label>
+        <!-- /ko -->
+        <ul data-bind="foreach: Number.range(1, 5).every()" class="rating">
+            <li class="inline-block">
+                <!-- ko if: $parent.editable -->
+                <i data-bind="click: function () { $parent.rating($data); },
+                              css: { 'icon-star': !$parent.rating() || ($parent.rating() < $data),
+                                     'icon-star-two': $parent.rating() && ($parent.rating() >= $data) }"
+                   class="icon clickable"></i>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.editable -->
+                <i data-bind="css: { 'icon icon-star-two': $parent.rating && ((Object.isFunction($parent.rating) ? $parent.rating() : $parent.rating) >= $data) }"></i>
+                <!-- /ko -->
+            </li>
+        </ul>
+        <div data-bind="text: rating" itemprop="rating" class="sr-only"></div>
+        <!-- ko if: $data.editable -->
+        <form data-bind="submit: function () { submit($data); }">
+            <label class="block">
+                <span data-bind="string: 'review.comment'" class="block"></span>
+                <textarea data-bind="value: comment, valueUpdate: 'input'" maxlength="1000"></textarea>
+            </label>
+            <button data-bind="click: function () { $('#action-confirm-popover-' + reviewer.id).show(); }, string: 'listing.form.submit.label',
+                               enable: rating() && comment() && comment().compact()"
+                    class="btn btn-info"></button>
+            <div data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                        data: { id: reviewer.id, buttonType: 'submit', data: $data, title: 'review.confirm',
+                                        action: function () {} } }"
+                 class="position-absolute action-confirm-popover-container"></div>
+        </form>
+        <!-- /ko -->
+        <!-- ko ifnot: $data.editable -->
+        <p data-bind="text: comment" itemprop="description" class="preserve-whitespace"></p>
+        <time data-bind="text: Date.utc.create(createdAt).format('long'), attr: { datetime: createdAt }" itemprop="dtreviewed" class="text-muted small"></time>
+        <!-- /ko -->
+    </div>
+</div>

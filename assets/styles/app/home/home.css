@@ -1,0 +1,162 @@
+.home .heading {
+	font-size: 48px;
+	margin: 0;
+}
+
+.home .heading-sub {
+	margin: 0;
+	font-size: 28px;
+}
+
+.home .search-bar {
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
+
+.home .search-bar .search-input {
+	height: 38px;
+	width: 300px;
+}
+
+.home .search-bar input {
+	font-size: 15px;
+}
+
+.home .search-bar .search-input-location input {
+	font-size: 12px;
+}
+
+.home .search-bar input[type=checkbox] {
+	margin-top: 0;
+}
+
+.home .search-bar .use-current-position {
+	margin-top: 4px;
+}
+
+.home .search-bar .find-btn {
+	margin-top: 24px;
+	width: 80px;
+	height: 40px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.home .search-bar form label > span {
+	margin-bottom: 3px;
+}
+
+.home .category-name {
+	font-size: 20px;
+	margin: 0 0 10px 0;
+	text-align: center;
+}
+
+.home .see-more-link {
+	position: relative;
+	top: -10px;
+}
+
+.home .colored {
+	color: #FFF;
+	background-color: #3498DB;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.home .colored a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.home .colored input {
+	color: #333;
+}
+
+.home .up {
+	margin-top: -20px;
+}
+
+.home .meter {
+	margin-bottom: -20px;
+}
+
+@media (min-width: 634px) {
+	.home .search-bar .input {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.home .search-bar .find-btn {
+		margin-left: 10px;
+	}
+}
+
+@media (min-width: 992px) {
+	.home .search-bar {
+		border-radius: 8px;
+	}
+
+	.home .search-bar .find-btn {
+		position: absolute;
+	}
+}
+
+@media (max-width: 320px) {
+	.home .search-bar .search-input {
+		width: 280px;
+	}
+}
+
+@media (max-width: 424px) {
+	.home .search-bar .find-btn {
+		margin-top: 10px;
+	}
+
+	.home .up a {
+		display: block;
+		text-align: center;
+		margin-top: 3px;
+	}
+}
+
+@media (max-width: 480px) {
+	.home hr {
+		margin-top: 50px;
+	}
+}
+
+@media (max-width: 500px) {
+	.home .heading {
+		font-size: 42px;
+		line-height: 1;
+	}
+
+	.home .heading-sub {
+		font-size: 18px;
+		margin-top: 6px;
+	}
+}
+
+@media (max-width: 767px) {
+	.home .heading-right {
+		margin-top: 30px;
+	}
+		
+	.home .search-bar {
+	    padding-top: 30px;
+	    padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+	.home .search-bar .find-btn {
+		position: static;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
+}

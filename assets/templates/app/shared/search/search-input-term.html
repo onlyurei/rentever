@@ -1,0 +1,11 @@
+<label class="search-input-term">
+    <span data-bind="string: 'search.label'" class="block search-input-label text-left"></span>
+    <!-- ko if: $root.dom.isTouchDevice -->
+    <input data-bind="value: value, valueUpdate: 'input', attr: { placeholder: $root.strings('search.placeholder'), name: name }"
+           type="search" class="search-input">
+    <!-- /ko -->
+    <!-- ko ifnot: $root.dom.isTouchDevice -->
+    <input data-bind="value: value, valueUpdate: 'input', attr: { placeholder: $root.strings('search.placeholder'), name: name }"
+           type="search" class="search-input" autofocus>
+    <!-- /ko -->
+</label>

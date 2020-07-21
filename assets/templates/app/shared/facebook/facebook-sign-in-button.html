@@ -1,0 +1,9 @@
+<div class="top-margin text-center">
+    <a data-bind="click: function () { $data.setRedirectUrl && setRedirectUrl(); $root.ga.trackEvent({ category: 'user', action: 'login with facebook' },
+                                       function () { window.location = '/api/auth/facebookLogin'; }); }, attr: { title: $root.strings('login.sign.in.with.facebook') }"
+       href="/api/auth/facebookLogin" data-go="true" rel="nofollow">
+        <img src="/images/app/shared/facebook-signin-button.png" width="246" height="54">
+    </a>
+</div>
+<div class="top-margin bottom-margin-sm text-center" data-bind="string: 'login.or'"></div>
+<hr>

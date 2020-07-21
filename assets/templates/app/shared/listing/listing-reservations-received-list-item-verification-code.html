@@ -1,0 +1,20 @@
+<div data-bind="attr: { id: 'reservation-verification-code-collapse-' + id }, css: { in: $data.code }"
+     class="collapse listing-reservations-received-list-item-verification-code">
+    <form data-bind="submit: function () { $parent.changeReservationStatus($data, (status() == 'accepted') ? 'picked_up' : ((status() == 'picked_up') ? 'returned': ''),
+                                           $('#reservation-verification-code-input-' + id).val()); }">
+        <div class="well text-center">
+            <label class="vertical-align-middle">
+                <span data-bind="string: 'reservation.action.verification.code.prompt'" class="top-margin inline-block"></span>
+                <input data-bind="attr: { id: 'reservation-verification-code-input-' + id }, value: $data.code || ''" type="text"
+                       class="text-input-big top-margin uppercase" maxlength="4">
+                <button data-bind="string: 'label.enter', click: function () { $('#action-confirm-popover-' + id).show(); }" class="btn btn-info top-margin"></button>
+                <span data-bind="template: { name: 'app/shared/action-confirm-popover',
+                                             data: { id: id, title: 'label.mark.as.' + ((status() == 'accepted') ? 'picked_up' : ((status() == 'picked_up') ? 'returned': '')),
+                                                     buttonType: 'submit', action: function () {} } }"
+                      class="position-absolute action-confirm-popover-container"></span>
+            </label>
+            <div data-bind="template: { name: 'app/shared/loading', data: $parent }"></div>
+            <div data-bind="template: { name: 'app/shared/error', data: $parent }"></div>
+        </div>
+    </form>
+</div>

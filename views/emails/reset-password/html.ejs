@@ -1,0 +1,20 @@
+<% include ../shared/up.html.ejs %>
+<tr>
+    <td class="content-block">
+        You can reset your password by clicking on the link below:
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        <a href="<%= link %>" class="btn-primary">Reset Password</a>
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        Tip: if you are unable to login using the email address and the newly reset password, it means this email address hasn't been verified yet.<br><br>
+        You can login with your username <strong><%= username %></strong> and the newly reset password.<br><br>
+        Remember to verify the email by following the instruction sent.<br>
+        You can request to re-send the verification email on Account page after logging in.
+    </td>
+</tr>
+<% include ../shared/down.html.ejs %>

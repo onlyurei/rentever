@@ -1,0 +1,17 @@
+<% include ../shared/up.html.ejs %>
+<tr>
+    <td class="content-block">
+        You got a new message from <%= posterName %> (owner) about listing <strong><%= listingTitle %></strong> on RentEver:
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        "<%= message %>"
+    </td>
+</tr>
+<tr>
+    <td class="content-block">
+        <a href="<%= link %>" class="btn-primary">See Listing Thread</a>
+    </td>
+</tr>
+<% include ../shared/down.html.ejs %>

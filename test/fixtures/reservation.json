@@ -1,0 +1,289 @@
+[
+    {
+        "id": 1,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2014-10-15 00:00:00",
+        "datetimeTo": "2014-10-15 00:00:00",
+        "status": "accepted"
+    },
+    {
+        "id": 2,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2014-10-19 13:00:00",
+        "datetimeTo": "2014-10-21 13:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 10,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2015-01-05 13:00:00",
+        "datetimeTo": "2015-01-10 15:00:00",
+        "status": "accepted"
+    },
+    {
+        "id": 11,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2015-02-05 00:00:00",
+        "datetimeTo": "2015-02-05 23:59:59",
+        "status": "accepted"
+    },
+    {
+        "id": 12,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2015-03-05 00:00:00",
+        "datetimeTo": "2015-03-05 23:59:59",
+        "status": "accepted"
+    },
+    {
+        "id": 13,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2015-12-10 18:00:00",
+        "datetimeTo": "2015-12-11 09:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 20,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-01 09:00:00",
+        "datetimeTo": "2014-07-01 18:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 21,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-02 09:00:00",
+        "datetimeTo": "2014-07-02 18:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 22,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-03 09:00:00",
+        "datetimeTo": "2014-07-03 18:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 23,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-04 09:00:00",
+        "datetimeTo": "2014-07-04 18:00:00",
+        "status": "accepted",
+        "pickupCode": "K1"
+    },
+    {
+        "id": 24,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-05 09:00:00",
+        "datetimeTo": "2014-07-05 18:00:00",
+        "status": "picked_up",
+        "returnCode": "K2",
+        "estimatedPrice": 10
+    },
+    {
+        "id": 25,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-06 09:00:00",
+        "datetimeTo": "2014-07-06 18:00:00",
+        "status": "requested"
+    },
+    {
+        "id": 26,
+        "requester": 3,
+        "listing": 1,
+        "datetimeFrom": "2014-07-07 09:00:00",
+        "datetimeTo": "2014-07-07 18:00:00",
+        "status": "accepted",
+        "pickupCode": "A1",
+        "returnCode": "B2"
+    },
+    {
+        "id": 27,
+        "requester": 2,
+        "listing": 1,
+        "datetimeFrom": "2014-10-15 00:00:00",
+        "datetimeTo": "2014-10-15 00:00:00",
+        "status": "returned"
+    },
+    {
+        "id": 200,
+        "requester": 2,
+        "listing": 2,
+        "datetimeFrom": "2016-01-01 00:00:00",
+        "datetimeTo": "2016-01-03 23:59:59",
+        "status": "picked_up",
+        "returnCode": "200",
+        "estimatedPrice": 30
+    },
+    {
+        "id": 201,
+        "requester": 2,
+        "listing": 2,
+        "datetimeFrom": "2016-01-05 00:00:00",
+        "datetimeTo": "2016-01-07 23:59:59",
+        "status": "picked_up",
+        "returnCode": "201",
+        "estimatedPrice": 30
+    },
+    {
+        "id": 300,
+        "requester": 1,
+        "listing": 2,
+        "datetimeFrom": "2016-01-05 00:00:00",
+        "datetimeTo": "2016-01-07 23:59:59",
+        "status": "returned"
+    },
+    {
+        "id": 301,
+        "requester": 2,
+        "listing": 2,
+        "datetimeFrom": "2016-01-05 00:00:00",
+        "datetimeTo": "2016-01-07 23:59:59",
+        "status": "returned"
+    },
+    {
+        "id": 400,
+        "requester": 2,
+        "listing": 400,
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-02 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 401,
+        "requester": 3,
+        "listing": 400,
+        "datetimeFrom": "2015-01-03 00:00:00",
+        "datetimeTo": "2015-01-04 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 402,
+        "requester": 2,
+        "listing": 402,
+        "datetimeFrom": "2015-01-10 00:00:00",
+        "datetimeTo": "2015-01-15 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 403,
+        "requester": 3,
+        "listing": 402,
+        "datetimeFrom": "2015-01-09 00:00:00",
+        "datetimeTo": "2015-01-11 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 404,
+        "requester": 4,
+        "listing": 402,
+        "datetimeFrom": "2015-01-12 00:00:00",
+        "datetimeTo": "2015-01-13 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 405,
+        "requester": 4,
+        "listing": 402,
+        "datetimeFrom": "2015-01-09 00:00:00",
+        "datetimeTo": "2015-01-16 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 406,
+        "requester": 4,
+        "listing": 402,
+        "datetimeFrom": "2015-01-08 00:00:00",
+        "datetimeTo": "2015-01-09 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 406,
+        "requester": 4,
+        "listing": 402,
+        "datetimeFrom": "2015-01-16 00:00:00",
+        "datetimeTo": "2015-01-17 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 400,
+        "requester": 2,
+        "listing": 400,
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-02 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 500,
+        "requester": 3,
+        "listing": 500,
+        "datetimeFrom": "2015-01-05 00:00:00",
+        "datetimeTo": "2015-01-10 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 501,
+        "requester": 2,
+        "listing": 500,
+        "datetimeFrom": "2015-01-03 00:00:00",
+        "datetimeTo": "2015-01-12 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 502,
+        "requester": 4,
+        "listing": 500,
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-06 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 600,
+        "requester": 2,
+        "listing": 600,
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-06 23:59:59",
+        "status": "returned"
+    },
+    {
+        "id": 700,
+        "requester": 2,
+        "listing": 700,
+        "listingClone": {
+            "owner": { "id": "123" }
+        },
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-06 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 701,
+        "requester": 3,
+        "listing": 700,
+        "listingClone": {
+            "owner": { "id": "123" }
+        },
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-06 23:59:59",
+        "status": "requested"
+    },
+    {
+        "id": 800,
+        "requester": 3,
+        "listing": 800,
+        "datetimeFrom": "2015-01-01 00:00:00",
+        "datetimeTo": "2015-01-06 23:59:59",
+        "status": "accepted"
+    }
+]

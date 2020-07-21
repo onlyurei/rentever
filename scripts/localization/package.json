@@ -1,0 +1,23 @@
+{
+    "name": "webapp-localizer",
+    "version": "1.0.0",
+    "description": "A util set used to import/export localization files from/to Google Spreadsheet.",
+    "contributors": [
+        {
+            "name": "Cheng Fan",
+            "email": "cfan@eb.com"
+        }
+    ],
+    "private": true,
+    "scripts": {
+        "start": "node ./localization-files-importer.js"
+    },
+    "main": "./localization-files-importer.js",
+    "dependencies": {
+        "sugar": "^1.4.1",
+        "edit-google-spreadsheet": "^0.2.16"
+    },
+    "engines": {
+        "node": ">=0.10"
+    }
+}

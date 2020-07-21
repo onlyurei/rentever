@@ -1,0 +1,17 @@
+.listing-form .row {
+	margin-top: 20px;
+}
+
+.listing-form textarea {
+	height: 200px;
+}
+
+@media (max-width: 767px) {
+	.listing-form .top-margin {
+		margin-top: 0;
+	}
+
+	.listing-form .form-tip-rail {
+		min-height: 0;
+	}
+}

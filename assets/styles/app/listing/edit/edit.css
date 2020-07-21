@@ -1,0 +1,27 @@
+.listing-edit .edit-images .images li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.listing-edit .edit-images .images li img {
+	margin-left: auto;
+	margin-right: auto;
+	max-height: 300px;
+}
+
+.listing-edit .edit-images .images li textarea {
+	width: 100%;
+	height: 80px;
+	margin-top: 20px;
+}
+
+.listing-edit .btn-delete {
+	position: absolute;
+	right: 0;
+	top: 8px;
+}
+
+.listing-edit .action-confirm-popover-container {
+	right: 165px;
+	top: -15px;
+}

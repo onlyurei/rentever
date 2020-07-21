@@ -1,0 +1,17 @@
+<div data-bind="attr: { id: 'action-confirm-popover-' + id }" class="popover position-absolute hide-soft action-confirm-popover">
+    <div class="arrow"></div>
+    <div class="popover-content">
+        <div data-bind="string: $data.title || 'label.are.you.sure', tokens: $data.tokens" class="text-default bottom-margin-sm"></div>
+        <button data-bind="string: $data.yes || 'label.yes', attr: { type: $data.buttonType || 'button' },
+                           attr: { 'data-ga': 'action confirm popover|confirm|' + $root.strings($data.title || 'label.are.you.sure', $data.tokens) },
+                           click: function () { action($data.data || id); $('#action-confirm-popover-' + id).hide(); return true; },
+                           css: { 'btn-danger': $data.yesType == 'danger', 'btn-warning': $data.yesType == 'warning', 'btn-info': $data.yesType == 'info',
+                                  'btn-success': $data.yesType == 'success', 'btn-info': ($data.yesType == 'info') || !$data.yesType }"
+                class="btn btn-xs"></button>
+        <button data-bind="string: $data.no || 'label.no', click: function () { $('#action-confirm-popover-' + id).hide(); },
+                           attr: { 'data-ga': 'action confirm popover|cancel|' + $root.strings($data.title || 'label.are.you.sure', $data.tokens) },
+                           css: { 'btn-danger': $data.noType == 'danger', 'btn-warning': $data.noType == 'warning', 'btn-info': $data.noType == 'info',
+                                  'btn-success': $data.noType == 'success', 'btn-info': ($data.noType == 'info') || !$data.noType }"
+                class="btn btn-xs"></button>
+    </div>
+</div>

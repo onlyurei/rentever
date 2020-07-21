@@ -1,0 +1,25 @@
+<ol data-bind="foreach: messages" class="messages">
+    <li data-bind="css: { 'animated animated-fast lightSpeedIn': $data.newlyAdded }" class="clearfix">
+        <div data-bind="css: { 'media-right pull-right': sender.id != $parent.ownerId() }" class="media clearfix">
+            <a data-bind="attr: { href: '/user/profile/' + $root.urlUtil.toUrl(sender.firstName || sender.username) + '/' + sender.id },
+                          css: { 'pull-left': sender.id == $parent.ownerId(), 'pull-right': sender.id != $parent.ownerId(),
+                                 'bold': (sender.id == $parent.ownerId()) || (sender.id == $root.config().user.id) }"
+               class="text-center hover-bg">
+                <figure>
+                    <img data-bind="attr: { src: sender.profilePictureUrl || '/images/app/shared/profile-picture-placeholder.png' },
+                                    css: { 'pull-left': sender.id == $parent.ownerId(), 'pull-right': sender.id != $parent.ownerId() }"
+                         width="50" height="50" class="media-object">
+                    <figcaption data-bind="text: sender.firstName || sender.username" class="text-default media-heading"></figcaption>
+                </figure>
+            </a>
+            <div class="media-body">
+                <p class="message-body">
+                    <span data-bind="text: message" class="preserve-whitespace block"></span>
+                    <time data-bind="text: Date.utc.create(createdAt).format('long'), attr: { datetime: createdAt }" class="text-muted small"></time>
+                </p>
+            </div>
+        </div>
+    </li>
+</ol>
+<div data-bind="template: { name: 'widget/pagination', data: { page: page(), pageSize: pageSize(), total: (total() / pageSize()).ceil(), span: 6 } }"
+     class="row"></div>

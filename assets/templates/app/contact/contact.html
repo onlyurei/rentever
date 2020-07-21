@@ -1,0 +1,4 @@
+<div data-bind="string: 'document.contact-us'" class="document"></div>
+<div data-bind="template: { name: 'app/home/home-facebook-comments-and-page',
+                            afterRender: function () { $root.exec(function () { window.FB.XFBML.parse.delay($root.dom.isTouchDevice ? 1000 : 100); },
+                                                                  function () { return window.FB && window.FB.XFBML; }); } }"></div>

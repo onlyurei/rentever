@@ -1,0 +1,6 @@
+<!-- ko with: { $parent: $data, status: status, role: (requester.id == $root.config().user.id) ? 'requester' : ((listingClone.owner.id == $root.config().user.id)  ? 'owner' : '') } -->
+<div data-bind="template: 'app/shared/listing/listing-reservation-status-marker'"></div>
+<p data-bind="string: 'reservation.status.' + status() + '.info.' + role,
+              tokens: { ownerName: $parent.listingClone.owner.firstName, renterName: $parent.requester.firstName, title: $parent.listingClone.title }"
+   class="text-default text-center"></p>
+<!-- /ko -->

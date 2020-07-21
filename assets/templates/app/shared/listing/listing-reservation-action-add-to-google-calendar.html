@@ -1,0 +1,12 @@
+<!-- ko if: (status() == 'accepted') || (status() == 'picked_up') -->
+<a data-bind="string: 'reservation.action.add.to.google.calender.' + ((status() == 'accepted') ? 'pickup' : 'return'),
+              css: { 'btn-info': status() == 'accepted', 'btn-success': status() == 'picked_up' },
+              attr: { href: 'http://www.google.com/calendar/event?action=TEMPLATE&text={text}&dates={dates}&location={location}&details={details}'.assign({
+                  text: $root.strings((status() == 'accepted') ? 'pickup.placeholder.verb' : 'return.placeholder') + ' ' + listingClone.title,
+                  dates: Date.create((status() == 'accepted') ? datetimeFrom : datetimeTo).iso().remove(/[-:]/g).remove(/\.[0-9]+/) + '/' +
+                         Date.create((status() == 'accepted') ? datetimeFrom : datetimeTo).advance('15 minutes').iso().remove(/[-:]/g).remove(/\.[0-9]+/),
+                  location: listingClone.displayedAddress,
+                  details: listingClone.description.short + ' ' + $root.config().url + '/listing/reservation/' + $root.urlUtil.toUrl(listingClone.title) + '/' + id
+              }) }"
+   class="btn btn-sm block full-width small-text top-margin" target="_blank"></a>
+<!-- /ko -->

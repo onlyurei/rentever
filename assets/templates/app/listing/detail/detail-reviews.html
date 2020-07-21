@@ -1,0 +1,21 @@
+<!-- ko ifnot: $data.readonly -->
+<section class="top-margin-x2">
+    <h2 data-bind="string: 'reviews.customer'"></h2>
+    <!-- ko if: $parent.ratings -->
+    <!-- ko if: !$parent.loading() && !$parent.ratings().count -->
+    <p data-bind="string: 'entries.none'"></p>
+    <!-- /ko -->
+    <div data-bind="template: { name: 'widget/ratings', data: Object.merge($parent.ratings(), { maxScore: 5, reviewed: title }) }" itemprop="review"></div>
+    <!-- /ko -->
+</section>
+
+<section class="top-margin-x2">
+    <h2 data-bind="string: 'reviews.most.recent'"></h2>
+    <!-- ko if: !$parent.loading() && !$parent.reviews().length -->
+    <p data-bind="string: 'entries.none'"></p>
+    <!-- /ko -->
+    <ol data-bind="foreach: $parent.reviews" class="list-group">
+        <li data-bind="template: 'app/shared/listing/listing-reservation-review'" class="list-group-item no-hover-bg"></li>
+    </ol>
+</section>
+<!-- /ko -->

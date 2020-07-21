@@ -1,0 +1,859 @@
+/* ====================================[ Bootstrap Overrides ]==================================== */
+
+a,
+.btn-link {
+	color: #217dbb;
+}
+
+a:hover,
+a:focus,
+a:active,
+.btn-link:hover,
+.btn-link:focus {
+	color: #3498db;
+}
+
+a h1,
+a h2,
+a h3,
+a h4,
+a h5,
+a h6 {
+	color: #333;
+}
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active,
+.nav > li > a:hover,
+.nav > li > a:focus,
+.navbar-toggle,
+.pagination > li > a,
+.pagination > li > span {
+	background-color: #3498db;
+	border-color: transparent;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-group.open .dropdown-toggle.btn-primary,
+.nav .open > a,
+.nav .open > a:focus,
+.dropdown-menu > li > a:focus,
+.navbar-toggle:hover,
+.navbar-toggle:focus,
+.navbar-nav li.active,
+.navbar-nav li.active a:hover,
+.navbar-nav li.active a:focus,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+	background-color: #217dbb;
+	border-color: transparent;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus,
+.navbar-nav li.active a {
+	color: #FFF;
+}
+
+.navbar {
+	background-color: #F3F3F3;
+	min-height: 50px;
+	margin-bottom: 21px;
+	padding-top: 3px;
+}
+
+.navbar-brand {
+	padding: 19px 15px;
+	height: 50px;
+}
+
+.navbar-toggle {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.navbar-toggle .icon-bar {
+	background-color: #FFF;
+}
+
+.nav-tabs {
+	border-bottom: none;
+}
+
+label,
+.label {
+	font-weight: normal;
+	white-space: normal;
+}
+
+h1 {
+	font-size: 26px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4 {
+	font-size: 14px;
+}
+
+.btn {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+ul, ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+kbd {
+	font-size: 120%;
+}
+
+.carousel-caption {
+	bottom: 0;
+}
+
+.modal-header.none {
+	padding: 0;
+	border-bottom: none;
+	min-height: 0;
+}
+
+.modal .close {
+	background-image: url(/images/app/shared/close-button.png);
+	background-size: 28px;
+	height: 28px;
+	width: 28px;
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	z-index: 1;
+	filter: none;
+	opacity: 1;
+	border-radius: 15px;
+	box-shadow: 0 -1px 12px rgba(0, 0, 0, .2);
+}
+
+.modal-dialog {
+	top: 20px;
+}
+
+.modal-body {
+	max-height: none;
+	overflow-y: visible;
+	padding: 10px;
+	-webkit-transform: translate3d(0, 0, 0); /* mobile safari scroll bug fix */
+}
+
+.alert,
+.label {
+	font-size: 100%;
+}
+
+.popover {
+	font-size: 15px;
+}
+
+.popover .popover-content {
+	text-align: center;
+}
+
+.popover .btn {
+	font-size: 14px;
+	height: 24px;
+}
+
+.progress {
+	border: none;
+}
+
+.alert {
+	padding: 5px 30px 5px 10px;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+	background-image: none;
+}
+
+.carousel-control.left:hover,
+.carousel-control.left:focus {
+	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+
+.carousel-control.right:hover,
+.carousel-control.right:focus {
+	left: auto;
+	right: 0;
+	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.3) 100%);
+	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.3) 100%);
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.3) 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}
+
+.list-group-item:hover,
+.list-group-item:focus {
+	background-color: #F3F3F3;
+}
+
+@media (min-width: 768px) {
+	.navbar-nav > li > a {
+		padding-top: 13px;
+		padding-bottom: 13px;
+	}
+
+	.carousel-caption {
+		padding-bottom: 20px;
+	}
+}
+
+/* ====================================[ jQuery UI Overrides ]==================================== */
+
+.ui-widget {
+	font-family: inherit;
+}
+
+.ui-autocomplete {
+	background: #FFF;
+	border-radius: 0;
+}
+
+.ui-menu .ui-menu-item {
+	border-radius: 0;
+	font-size: 13px;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border-color: #127BA3;
+	background: #158CBA;
+	color: #FFF;
+	font-weight: 400;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	background: #217dbb;
+	border-color: transparent;
+	font-weight: bold;
+	color: #FFF;
+}
+
+.ui-datepicker {
+	width: auto;
+}
+
+.ui-datepicker .partial a {
+	background: #DDD;
+}
+
+/* ====================================[ Resets ]==================================== */
+
+html, body {
+	background-color: #FEFEFE;
+	color: #333;
+	height: 100%;
+	font-size: 14px;
+}
+
+body {
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+thead th {
+	background-color: #CDCDCD;
+	font-weight: 700;
+	line-height: 12px;
+	text-align: left;
+}
+
+th, td {
+	border: 1px solid #999999;
+	padding: 6px 10px;
+}
+
+a, a:hover, a:active, a:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+input {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+textarea {
+	padding: 2px 4px;
+}
+
+form label {
+	font-size: 15px;
+}
+
+input[type=search] {
+	border: 1px solid #888;
+}
+
+figcaption {
+	margin-top: 5px;
+}
+
+hr {
+	border-top-color: #E3E3E3;
+}
+
+/* ====================================[ Utils ]==================================== */
+
+.hide-soft {
+	display: none;
+}
+
+.block {
+	display: block !important;
+}
+
+.inline-block {
+	display: inline-block !important;
+	margin-right: -4px !important;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inline {
+	display: inline !important;
+}
+
+.overflow-visible {
+	overflow: visible !important;
+}
+
+.position-fixed {
+	position: fixed;
+}
+
+.position-absolute {
+	position: absolute !important;
+}
+
+.position-relative {
+	position: relative !important;
+}
+
+.position-static {
+	position: static !important;
+}
+
+.offset-center {
+	top: 49%;
+	left: 49%;
+}
+
+@media (min-width: 768px) {
+	.v-middle {
+		display: inline-block;
+		vertical-align: middle;
+		float: none;
+	}
+}
+
+.vertical-align-middle {
+	vertical-align: middle;
+}
+
+.vertical-align-middle > * {
+	vertical-align: middle;
+}
+
+.vertical-align-top {
+	vertical-align: top;
+}
+
+.vertical-align-top > * {
+	vertical-align: top;
+}
+
+.vertical-align-bottom {
+	vertical-align: bottom;
+}
+
+.vertical-align-bottom > * {
+	vertical-align: bottom;
+}
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.no-border {
+	border: none !important;
+}
+
+.no-border-radius {
+	border-radius: 0 !important;
+}
+
+.transparent-border {
+	border-color: transparent !important;
+}
+
+.italic {
+	font-style: italic !important;
+}
+
+.bold {
+	font-weight: 700 !important;
+}
+
+.uppercase {
+	text-transform: uppercase !important;
+}
+
+.clickable {
+	cursor: pointer !important;
+}
+
+.link-disabled,
+.link-disabled > * {
+	color: #999 !important;
+	cursor: default !important;
+}
+
+.click-blocker {
+	background-image: url(/images/app/shared/transparent-pixel.gif) !important;
+	background-image: -moz-linear-gradient(top, transparent 0%, transparent 100%) !important;
+	background-image: -ms-linear-gradient(top, transparent 0%, transparent 100%) !important;
+	background-image: -webkit-linear-gradient(top, transparent 0%, transparent 100%) !important;
+	background-image: linear-gradient(to bottom, transparent 0%, transparent 100%) !important;
+	display: block !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	z-index: 1 !important;
+}
+
+.bottom-box-shadow {
+	box-shadow: 0 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.left-right-padding {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.left-right-padding-sm {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.left-right-padding-md {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.left-right-padding-x2 {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.left-padding {
+	padding-left: 15px;
+}
+
+.left-padding-sm {
+	padding-left: 5px;
+}
+
+.left-padding-md {
+	padding-left: 10px;
+}
+
+.left-padding-x2 {
+	padding-left: 30px;
+}
+
+.right-padding {
+	padding-right: 15px;
+}
+
+.right-padding-sm {
+	padding-right: 5px;
+}
+
+.right-padding-md {
+	padding-right: 10px;
+}
+
+.right-padding-x2 {
+	padding-right: 30px;
+}
+
+.top-padding {
+	padding-top: 15px;
+}
+
+.top-padding-sm {
+	padding-top: 5px;
+}
+
+.top-padding-md {
+	padding-top: 10px;
+}
+
+.top-padding-x2 {
+	padding-top: 30px;
+}
+
+.bottom-padding {
+	padding-bottom: 15px;
+}
+
+.bottom-padding-sm {
+	padding-bottom: 5px;
+}
+
+.bottom-padding-md {
+	padding-bottom: 10px;
+}
+
+.bottom-padding-x2 {
+	padding-bottom: 30px;
+}
+
+.left-right-margin {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.left-right-margin-sm {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.left-right-margin-md {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.left-right-margin-x2 {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.left-margin {
+	margin-left: 15px;
+}
+
+.left-margin-sm {
+	margin-left: 5px;
+}
+
+.left-margin-md {
+	margin-left: 10px;
+}
+
+.left-margin-x2 {
+	margin-left: 30px;
+}
+
+.right-margin {
+	margin-right: 15px;
+}
+
+.right-margin-sm {
+	margin-right: 5px;
+}
+
+.right-margin-md {
+	margin-right: 10px;
+}
+
+.right-margin-x2 {
+	margin-right: 30px;
+}
+
+.top-margin {
+	margin-top: 15px;
+}
+
+.top-margin-sm {
+	margin-top: 5px;
+}
+
+.top-margin-md {
+	margin-top: 10px;
+}
+
+.top-margin-x2 {
+	margin-top: 30px;
+}
+
+.bottom-margin {
+	margin-bottom: 15px;
+}
+
+.bottom-margin-sm {
+	margin-bottom: 5px;
+}
+
+.bottom-margin-md {
+	margin-bottom: 10px;
+}
+
+.bottom-margin-x2 {
+	margin-bottom: 30px;
+}
+
+.position-top {
+	top: 0;
+}
+
+.position-left {
+	left: 0;
+}
+
+.position-right {
+	right: 0;
+}
+
+.position-bottom {
+	bottom: 0;
+}
+
+.preserve-whitespace {
+	white-space: pre-wrap;
+}
+
+.small-text {
+	font-size: 11px !important;
+}
+
+/* ====================================[ Components ]==================================== */
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -40px;
+}
+
+.comma-separated-list .item:after {
+	content: ","
+}
+
+.comma-separated-list .item-container:last-of-type .item:after {
+	content: ""
+}
+
+.semi-colon-separated-list .item:after {
+	content: ";"
+}
+
+.semi-colon-separated-list .item-container:last-of-type .item:after {
+	content: ""
+}
+
+.content-container {
+	padding-bottom: 20px;
+}
+
+.hover-bg:hover,
+.hover-bg:focus {
+	background-color: #F3F3F3;
+}
+
+.no-hover-bg:hover,
+.no-hover-bg:focus {
+	background-color: transparent;
+}
+
+.full-width-row {
+	margin-left: -12px;
+	margin-right: -12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.listing-price {
+	text-align: center;
+}
+
+.currency-symbol {
+	vertical-align: top;
+}
+
+.listing-price-value {
+	font-size: 24px;
+}
+
+.listing-price-type {
+	font-weight: bold;
+}
+
+.form-tip-rail {
+	padding: 18px 10px 10px;
+	color: #666;
+	border-right: 1px solid #E3E3E3;
+	min-height: 63px;
+}
+
+@media (max-width: 767px) {
+	.vr-left {
+		border-top: 1px solid #E3E3E3;
+	}
+
+	.vr-right {
+		border-bottom: 1px solid #E3E3E3;
+	}
+}
+
+@media (min-width: 768px) {
+	.vr-left {
+		border-left: 1px solid #E3E3E3;
+	}
+
+	.vr-right {
+		border-right: 1px solid #E3E3E3;
+	}
+}
+
+.remove-icon {
+	color: #AAA;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.remove-icon:hover,
+.remove-icon:focus {
+	color: #F00;
+}
+
+.img-responsive-container > img {
+	max-width: 100%;
+	height: auto;
+}
+
+.list-disc {
+	list-style: disc;
+}
+
+.fileupload {
+	width: 100px;
+	height: 40px;
+	position: relative;
+	overflow: hidden;
+}
+
+.fileupload input {
+	position: absolute;
+	top: 0;
+	right: 0; /* not left, because only the right part of the input seems to be clickable in some browser I can't remember */
+	cursor: pointer;
+	opacity: 0.0;
+	filter: alpha(opacity=0); /* and all the other old opacity stuff you want to support */
+	font-size: 300px; /* wtf, but apparently the most reliable way to make a large part of the input clickable in most browsers */
+	height: 200px;
+}
+
+.btn-default {
+	background-color: #3F3F3F;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+	background-color: #000;
+}
+
+.text-slim {
+	font-weight: 300;
+}
+
+.text-normal {
+	font-weight: 400;
+}
+
+.text-default {
+	color: #333;
+}
+
+.touch a.text-default,
+.touch a .text-default {
+	color: inherit;
+}
+
+.remover {
+	z-index: 1;
+}
+
+.text-input-big {
+	height: 50px;
+	font-size: 35px;
+	font-weight: bold;
+	padding: 5px;
+	width: 125px;
+}
+
+.disclaimer-popover {
+	width: 300px;
+}
+
+.fb-comments,
+.fb-comments iframe[style],
+.fb-comments span {
+	width: 100% !important;
+}

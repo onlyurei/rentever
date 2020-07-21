@@ -22,21 +22,73 @@
 
 module.exports.routes = {
 
+    //Auth
+    'POST /api/auth/login': 'AuthController.login',
+    'POST /api/auth/logout': 'AuthController.logout',
+    'GET /api/auth/facebookLogin': 'AuthController.facebookLogin',
+    'GET /api/auth/facebookCallback': 'AuthController.facebookCallback',
 
-  // Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, etc. depending on your
-  // default view engine) your home page.
-  //
-  // (Alternatively, remove this and add an `index.html` file in your `assets` directory)
-  '/': {
-    view: 'homepage'
-  },
+    //Config
+    'GET /api/config': 'ConfigController.get',
 
+    //Db
+    'GET /api/db/populate': 'DbController.populate',
 
-  // Custom routes here...
+    //Geo
+    'GET /api/geo/normalizeAddress': 'GeoController.normalizeAddress',
 
+    //Listing
+    'GET /api/listing/search': 'ListingController.search',
+    'GET /api/listing/getCategories': 'ListingController.getCategories',
+    'POST /api/listing/uploadImage/:id': 'ListingController.uploadImage',
 
-  // If a request to a URL doesn't match any of the custom routes above,
-  // it is matched against Sails route blueprints.  See `config/blueprints.js`
-  // for configuration options and examples.
+    //ListingImage
+    'PUT /api/listingImage/saveSequence': 'ListingImageController.saveSequence',
+
+    //Favorite
+    'GET /api/favorite': 'FavoriteController.list',
+    'POST /api/favorite/:id': 'FavoriteController.create',
+    'DELETE /api/favorite/:id': 'FavoriteController.remove',
+
+    //Log
+    'POST /api/log/log': 'LogController.log',
+
+    //Reservation
+    'GET /api/reservation/getAvailabilityForDatetimeRange': 'ReservationController.getAvailabilityForDatetimeRange',
+    'GET /api/reservation/getReservedDatesForPublicCalendar': 'ReservationController.getReservedDatesForPublicCalendar',
+    'POST /api/reservation/reserveForDatetimeRange': 'ReservationController.reserveForDatetimeRange',
+    'PUT /api/reservation/markAsCancelled': 'ReservationController.markAsCancelled',
+    'PUT /api/reservation/markAsDeclined': 'ReservationController.markAsDeclined',
+    'PUT /api/reservation/markAsAccepted': 'ReservationController.markAsAccepted',
+    'PUT /api/reservation/markAsPickedUp': 'ReservationController.markAsPickedUp',
+    'PUT /api/reservation/markAsReturned': 'ReservationController.markAsReturned',
+    'GET /api/reservation/getPickupCode': 'ReservationController.getPickupCode',
+    'GET /api/reservation/getReturnCode': 'ReservationController.getReturnCode',
+    'GET /api/reservation/getEstimatedPrice': 'ReservationController.getEstimatedPrice',
+    'GET /api/reservation/getConflictingReservations': 'ReservationController.getConflictingReservations',
+    'GET /api/reservation/generateContract': 'ReservationController.generateContract',
+    'GET /api/reservation/downloadContractPdf': 'ReservationController.downloadContractPdf',
+
+    //Review
+    'GET /api/review/getAverageForListing': 'ReviewController.getAverageForListing',
+    'GET /api/review/getAverageForUser': 'ReviewController.getAverageForUser',
+
+    //User
+    'GET /api/user/findOneDetailed/:id': 'UserController.findOneDetailed',
+    'GET /api/user/findOnePublicProfile/:id': 'UserController.findOnePublicProfile',
+    'PUT /api/user/sendVerificationEmail': 'UserController.sendVerificationEmail',
+    'POST /api/user/uploadProfilePicture/:id': 'UserController.uploadProfilePicture',
+    'DELETE /api/user/deleteProfilePicture/:id': 'UserController.deleteProfilePicture',
+    'GET /api/user/verifyEmail/:token': 'UserController.verifyEmail',
+    'PUT /api/user/sendResetPasswordEmail': 'UserController.sendResetPasswordEmail',
+    'GET /api/user/verifyPasswordResetToken/:token': 'UserController.verifyPasswordResetToken',
+    'PUT /api/user/resetPassword': 'UserController.resetPassword',
+
+    //Dashboard
+    'GET /dashboard': 'DashboardController.index'
+
+    // If a request to a URL doesn't match any of the custom routes above,
+    // it is matched against Sails route blueprints.  See `config/blueprints.js`
+    // for configuration options and examples.
 
 };

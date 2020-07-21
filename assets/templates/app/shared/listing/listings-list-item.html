@@ -1,0 +1,34 @@
+<!-- ko if: $data -->
+<div itemscope itemtype="http://data-vocabulary.org/Product" class="listings-list-item hover-bg">
+    <a data-bind="attr: { href: $data.url || ('/listing/detail/' + $root.urlUtil.toUrl(title) + '/' + id) }" class="clearfix block">
+        <div class="col-sm-2">
+            <img data-bind="attr: { src: ($data.images && images.length) ? images.sortBy('sequence')[0].thumbUrl : '/images/app/shared/image-placeholder.png' }"
+                 itemprop="image" class="img-responsive center">
+        </div>
+        <div class="col-sm-10">
+            <h4 data-bind="text: title" itemprop="name" class="title"></h4>
+            <!-- ko if: $data.unavailable -->
+            <label data-bind="string: 'listing.form.unavailable'" class="label label-danger inline-block"></label>
+            <!-- /ko -->
+            <ul class="listing-prices">
+                <!-- ko if: $data.price -->
+                <li class="listing-price inline right-margin">
+                    <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span> <span
+                        data-bind="text: price.daily.format()" itemprop="price" class="listing-price-value"></span>
+                    <span data-bind="string: 'listing.price.daily'" class="listing-price-type"></span>
+                </li>
+                <!-- /ko -->
+                <!-- ko if: $data.deposit && deposit.required -->
+                <li class="listing-price inline right-margin">
+                    <span data-bind="string: 'currency.symbol'" class="currency-symbol"></span> <span
+                        data-bind="text: deposit.amount.format()" class="listing-price-value"></span>
+                    <span data-bind="string: 'listing.deposit'" class="listing-price-type"></span>
+                </li>
+                <!-- /ko -->
+            </ul>
+            <h5 data-bind="text: description.short" itemprop="description" class="short-description"></h5>
+            <div data-bind="text: displayedAddress" class="address text-muted"></div>
+        </div>
+    </a>
+</div>
+<!-- /ko -->

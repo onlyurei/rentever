@@ -1,0 +1,10 @@
+<h1 data-bind="string: 'verify.email.title'" class="text-center"></h1>
+<!-- ko if: isVerified -->
+<div class="text-center">
+    <span  data-bind="string: 'verify.email.success'" class="label label-success"></span>
+</div>
+<!-- /ko -->
+<div data-bind="template: 'app/shared/error'"></div>
+<div class="text-center bottom-margin top-margin">
+    <a data-bind="string: 'verify.email.go.home'" href="/"></a> | <a data-bind="string: 'verify.email.go.my.account'" href="/my/account"></a>
+</div>
